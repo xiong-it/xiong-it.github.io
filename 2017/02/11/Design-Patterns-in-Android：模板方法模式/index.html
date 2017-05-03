@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Design Patterns in Android：模板方法模式 | MichaelX&#39;s Blog | MichaelX的开发博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="设计模式,Design Pattern,Android,模板方法模式,Template Method">
+    <meta name="description" content="今天给大家分享的是《设计模式Android篇：模板方法模式》。其实有一定开发经验的小伙伴已经不自觉的使用了模板方法了，今天将通过Android源码和Android开发案例跟大家讲解什么是模板方法模式。">
+<meta name="keywords" content="设计模式,Design Pattern,Android,模板方法模式,Template Method">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Patterns in Android：模板方法模式">
+<meta property="og:url" content="https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/index.html">
+<meta property="og:site_name" content="MichaelX&#39;s Blog">
+<meta property="og:description" content="今天给大家分享的是《设计模式Android篇：模板方法模式》。其实有一定开发经验的小伙伴已经不自觉的使用了模板方法了，今天将通过Android源码和Android开发案例跟大家讲解什么是模板方法模式。">
+<meta property="og:image" content="http://img.blog.csdn.net/20170209003325599?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-05-03T08:21:21.752Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design Patterns in Android：模板方法模式">
+<meta name="twitter:description" content="今天给大家分享的是《设计模式Android篇：模板方法模式》。其实有一定开发经验的小伙伴已经不自觉的使用了模板方法了，今天将通过Android源码和Android开发案例跟大家讲解什么是模板方法模式。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170209003325599?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+    
+        <link rel="alternative" href="/atom.xml" title="MichaelX&#39;s Blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">MichaelX</h5>
+          <a href="mailto:QQ:1692475028" title="QQ:1692475028" class="mail">QQ:1692475028</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xiong-it" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/xiong_it" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Design Patterns in Android：模板方法模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Design Patterns in Android：模板方法模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-10T17:16:27.000Z" itemprop="datePublished" class="page-time">
+  2017-02-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Design-Pattern/">Design Pattern</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模板方式模式定义"><span class="post-toc-number">2.</span> <span class="post-toc-text">模板方式模式定义</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模板方法的UML类图"><span class="post-toc-number">3.</span> <span class="post-toc-text">模板方法的UML类图</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模板方法示例代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">模板方法示例代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Android源码中模板方法模式"><span class="post-toc-number">5.</span> <span class="post-toc-text">Android源码中模板方法模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Android开发中的模板方式模式实践"><span class="post-toc-number">6.</span> <span class="post-toc-text">Android开发中的模板方式模式实践</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">7.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Design-Patterns-in-Android：模板方法模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Design Patterns in Android：模板方法模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月11日 1:16" datetime="2017-02-10T17:16:27.000Z"  itemprop="datePublished">2017-02-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Design-Pattern/">Design Pattern</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>今天给大家分享的是《设计模式Android篇：模板方法模式》。<br>其实有一定开发经验的小伙伴已经不自觉的使用了模板方法了，今天将通过Android源码和Android开发案例跟大家讲解什么是模板方法模式。<br><a id="more"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天给大家分享的是《设计模式Android篇：模板方法模式》。<br>其实有一定开发经验的小伙伴已经不自觉的使用了模板方法了，今天将通过Android源码和Android开发案例跟大家讲解什么是模板方法模式。<br>点击此处查看<a href="http://blog.csdn.net/xiong_it/article/details/54574020" target="_blank" rel="external">《Design Patterns in Android》</a>系列其他文章。</p>
+<pre><code>本文原创作者MichaelX（xiong_it），博客链接：http://blog.csdn.net/xiong_it，转载请注明出处。
+</code></pre><h1 id="模板方式模式定义"><a href="#模板方式模式定义" class="headerlink" title="模板方式模式定义"></a>模板方式模式定义</h1><blockquote>
+<p>模板方法模式(Template method pattern):定义一个操作中的算法框架，而将一些步骤延迟到子类中实现，使得子类可以不改变算法结构即可重新定义该算法的某些特定步骤</p>
+</blockquote>
+<p>以上定义有两个关键词</p>
+<ol>
+<li>算法框架：其本质是一个方法，也就是模板方法，它的调用会依次执行一些特定的步骤</li>
+<li>特定步骤：其本质一系列抽象的方法，交由子类实现，以重新定义该算法细节</li>
+</ol>
+<h1 id="模板方法的UML类图"><a href="#模板方法的UML类图" class="headerlink" title="模板方法的UML类图"></a>模板方法的UML类图</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170209003325599?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="模板方法的UML类图" title="">
+                </div>
+                <div class="image-caption">模板方法的UML类图</div>
+            </figure>
+<p>templateMethod：模板方法<br>methodA,methodB：特定步骤</p>
+<h1 id="模板方法示例代码"><a href="#模板方法示例代码" class="headerlink" title="模板方法示例代码"></a>模板方法示例代码</h1><p>基类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public abstract class AbstractClass &#123;</div><div class="line"></div><div class="line">	public void templateMethod() &#123;</div><div class="line">		methodA();</div><div class="line"></div><div class="line">		methodB();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	protected void abstract methodA();</div><div class="line"></div><div class="line">	protected void abstract methodB();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>子类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class ConcreteClassA extends AbstractClass &#123;</div><div class="line"></div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void abstract methodA() &#123;</div><div class="line">		System.out.println(&quot;ConcreteClassA.do something.&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void abstract methodB() &#123;</div><div class="line">		System.out.println(&quot;ConcreteClassA.do other thing.&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class ConcreteClassB extends AbstractClass &#123;</div><div class="line"></div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void abstract methodA() &#123;</div><div class="line">		System.out.println(&quot;ConcreteClassB.do something.&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void abstract methodB() &#123;</div><div class="line">		System.out.println(&quot;ConcreteClassB.do other thing.&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="Android源码中模板方法模式"><a href="#Android源码中模板方法模式" class="headerlink" title="Android源码中模板方法模式"></a>Android源码中模板方法模式</h1><p>在Android的api源码中，给我们提供了一个执行异步任务的类AsyncTask，其用法d大致如下</p>
+<ol>
+<li>写一个自己的异步任务类（比如叫DownloadTask）继承自AsyncTask，主要复写onPreExecute(),doInBackground(),onPostExecute()等。</li>
+<li>执行downloadTask</li>
+</ol>
+<p>代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">new DownloadTask().execute(url);</div></pre></td></tr></table></figure>
+<p>我们发现只要调用了execute（Params…）后，AsyncTask自动调用了各个回调方法了，onPreExecute(),doInBackground(),onPostExecute()等，其实这就是<strong>模板方法模式</strong>！下面我们通过一个android开发案例来弄懂模板方法。</p>
+<h1 id="Android开发中的模板方式模式实践"><a href="#Android开发中的模板方式模式实践" class="headerlink" title="Android开发中的模板方式模式实践"></a>Android开发中的模板方式模式实践</h1><p>Activity作为四大组件之首，是我们经常要使用到的，除非你的app不用和用户进行UI交互。<br>那在多个Activity中，我们通常在onCreate()做一些程序化的事情</p>
+<ul>
+<li>初始化控件</li>
+<li>获取网络/数据库数据</li>
+<li>注册事件监听</li>
+<li>注册广播</li>
+<li>等等</li>
+</ul>
+<p>在onDestroy()中</p>
+<ul>
+<li>反注册广播</li>
+<li>资源释放等</li>
+</ul>
+<p>这时我们通常可以使用模板方法模式来抽象出一个BaseActityBaseFragment类似，不展开分析。实例代码如下</p>
+<p>先写一个基类BaseActity<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">public abstract class BaseActivity extends Activity &#123;</div><div class="line">	@Override</div><div class="line">	public void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">		super.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">		initView();</div><div class="line"></div><div class="line">		initData();</div><div class="line"></div><div class="line">		initEvent();</div><div class="line"></div><div class="line">		registerBroadcast();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">     * 初始化视图控件</div><div class="line">     */</div><div class="line">	protected abstract void initView();</div><div class="line"></div><div class="line">	/**</div><div class="line">     * 初始化数据</div><div class="line">     */</div><div class="line">	protected abstract void initData();</div><div class="line"></div><div class="line">	/**</div><div class="line">     * 初始化点击长按等事件</div><div class="line">     */</div><div class="line">	protected abstract void initEvent();</div><div class="line"></div><div class="line">	/**</div><div class="line">     * 注册广播接收者</div><div class="line">     */</div><div class="line">	protected void registerBroadcast() &#123;</div><div class="line">		// 子类可以选择性复写</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void onDestroy() &#123;</div><div class="line">		super.onDestroy();</div><div class="line"></div><div class="line">		unRegisterBroadcast();</div><div class="line"></div><div class="line">		releaseMemory();</div><div class="line">	&#125;</div><div class="line">	/**</div><div class="line">     * 注销广播接收者</div><div class="line">     */</div><div class="line">	protected void unRegisterBroadcast() &#123;</div><div class="line">		// 子类可以选择性复写</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">     * 做些释放对象引用等其他操作以释放内存</div><div class="line">     */</div><div class="line">	protected abstract void releaseMemory();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>随手写一个实现类MyActivity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class MyActivity extends BaseActivity &#123;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void initView() &#123;</div><div class="line">		setContentView(resId);</div><div class="line">		// TODO findViewById();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void initData() &#123;</div><div class="line">		// TODO 访问数据库/网络获取数据</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void initEvent() &#123;</div><div class="line">		// TODO setOnClickListener</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void releaseMemory() &#123;</div><div class="line">		// TODO 把一些手动释放的对象值设为null</div><div class="line">		someObj = null;// and so on.</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果再有一个其他Activity代码也是如此编写，以BaseActivity的onCreate(),onDestroy()为模板方法（算法框架），initView(),initData(),initEvent()等方法为特定步骤，利用模板方法构建了一个较好的基类，子类无需修改BaseActivity的算法框架，不同的Activity只需复写这些特定步骤即重新定义这些特定的细节步骤。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>看完这篇《Design Patterns in Android：策略模式》，是不是很多人恍然大悟，原来模板方法就是这样啊！<br>当编写一个方法时，其中包含了某些特定的步骤时，就可以考虑使用模板方法模式了。</p>
+<p>好了，今天的《设计模式Android篇：策略模式》就到这里，请继续关注<a href="http://blog.csdn.net/xiong_it/article/details/54574020" target="_blank" rel="external">《Design Patterns in Android》（设计模式Android篇）</a>系列博文，欢迎各位读者朋友评论区拍砖交流，共同进步。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-03T08:21:21.752Z" itemprop="dateUpdated">2017年5月3日 16:21</time>
+</span><br>
+
+
+        版权声明：本文为博主原创文章，转载请注明出处：<a href="/2017/02/11/Design-Patterns-in-Android：模板方法模式/" target="_blank" rel="external">https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/</a>
+    </div>
+    <footer>
+        <a href="https://xiong-it.github.io">
+            <img src="/img/avatar.jpg" alt="MichaelX">
+            MichaelX
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Pattern/">Design Pattern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Template-Method/">Template Method</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模板方法模式/">模板方法模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/&title=《Design Patterns in Android：模板方法模式》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/&title=《Design Patterns in Android：模板方法模式》 — MichaelX's Blog&source=今天给大家分享的是《设计模式Android篇：模板方法模式》。其实有一定开发经验的小伙伴已经不自觉的使用了模板方法了，今天将通过Android源码和And..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Design Patterns in Android：模板方法模式》 — MichaelX's Blog&url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/&via=https://xiong-it.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/14/Android-BLE智能硬件开发详解/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android:BLE智能硬件开发详解</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/07/Design-Patterns-in-Android：策略模式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Design Patterns in Android：策略模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="Design-Patterns-in-Android：模板方法模式" data-title="Design Patterns in Android：模板方法模式" data-url="https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'michaelxgithub', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>MichaelX's Blog &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/&title=《Design Patterns in Android：模板方法模式》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/&title=《Design Patterns in Android：模板方法模式》 — MichaelX's Blog&source=今天给大家分享的是《设计模式Android篇：模板方法模式》。其实有一定开发经验的小伙伴已经不自觉的使用了模板方法了，今天将通过Android源码和And..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Design Patterns in Android：模板方法模式》 — MichaelX's Blog&url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/&via=https://xiong-it.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLUlEQVR42u3aUY7qQAwEQO5/ad7vkxDQbWclGCpfKwjJVJDWuD23W3zc/zseX3l8Pf/s63s9O+fx/NtfHNjY2Nhfwr6/PBJk/vprdruSR3ZyBWxsbOxT2a8LQ1J+ktvvkfk63xixsbGxf569KWxtd9A+bmxsbGzs/HLtovPz28eEjY2Njd0uejNOaPGbgnpBloaNjY398eyc8fl//8l8GxsbG/uD2ffySH7uJ4PY2Tad/LNvFNjY2NgHsfeBUR4GbdqDJJxqWyNsbGzsX2AnMVBOvaoUzdqn26weYmNjY388O79cG8fnD6L97Ky9wcbGxj6VvSkqsxFC/hCTdzf3wsbGxj6DvYmKZo3K63LVDgbaAcMFCRk2Njb2h7HbSChvANqC1D6CzReDjY2NfRK7jXiuKjn51TaR09NXsLGxsY9jb/6r5w3ALAza3PfpmdjY2NiHstsEJi9dLWlf0t6sARsbG/sg9vADFz2Odnw7uzI2Njb22ex6LBosK2HM4qe8TSq27GBjY2MfwW4bibxU5Bt69jFTcUdsbGzsg9h5IzH76Z8HQPttPfUGI2xsbOwj2O0oN4+E9scsbIpWjo2NjX0oO2kqrtqas9o6OQqVoj2n2NjY2F/L3gdACemqge5mqDzMrrCxsbE/mN3+Pk9+9O/bm1lc1a4fGxsb+yR2UnJmy52RZu+2wwxsbGzsk9ibNqBd9GYjTjG7zkcX2NjY2Eew92H9pkRt2qFZ2cPGxsY+m7259KYIzRqJvKS9CZWwsbGxv5y9aU7apqVtSNq2Z1NosbGxsb+X3V4ij+nzQWzyuNsS+OZ8bGxs7EPZ+dbJpCrmW23a1mJ2x3rCjI2Njf1V7M3mmGRDz6z4tTFTEVFhY2NjH8G+l0cezc/C+tl2z3pjKDY2NvZB7M2o4CpeHkLlI+dZGcbGxsb+XnYb91xVhNpoqS1gRaiEjY2NfQQ7idrrCD5m5IOEvOV4c19sbGzsH2ZvBq5tezPbjhN9MdjY2Ng/z85bi7ZhaLcBzRoVbGxs7PPYSag0Ky1tuD9bQ73xCBsbG/sgdtta5AODtmHYhP75th5sbGzsg9j/AC8P9xMVVwGFAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
