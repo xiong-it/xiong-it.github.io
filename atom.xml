@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xiong-it.github.io/"/>
-  <updated>2017-05-03T10:03:11.569Z</updated>
+  <updated>2017-05-09T09:37:04.963Z</updated>
   <id>https://xiong-it.github.io/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android开发：使用AutoInputAuthCode快速实现自动填写验证码</title>
+    <link href="https://xiong-it.github.io/2017/05/09/Android%E5%BC%80%E5%8F%91%EF%BC%9A%E4%BD%BF%E7%94%A8AutoInputAuthCode%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%86%99%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    <id>https://xiong-it.github.io/2017/05/09/Android开发：使用AutoInputAuthCode快速实现自动填写验证码/</id>
+    <published>2017-05-09T09:36:18.000Z</published>
+    <updated>2017-05-09T09:37:04.963Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用AutoInputAuthCode快速实现自动填写验证码<br><a id="more"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>该类库的实现原理:<a href="http://blog.csdn.net/xiong_it/article/details/50997084" target="_blank" rel="external">《Android开发:实现APP自动填写注册验证码功能》</a>。感兴趣的可以看下。  </p>
+<p>项目地址：<a href="https://github.com/xiong-it/AutoInputAuthCode" target="_blank" rel="external">https://github.com/xiong-it/AutoInputAuthCode</a></p>
+<blockquote>
+<p>本文原创作者:<a href="http://blog.csdn.net/xiong_it" target="_blank" rel="external">MichaelX</a>,博客地址:<a href="http://blog.csdn.net/xiong_it.转载请注明来源" target="_blank" rel="external">http://blog.csdn.net/xiong_it.转载请注明来源</a></p>
+</blockquote>
+<hr>
+<h1 id="AutoInputAuthCode使用介绍"><a href="#AutoInputAuthCode使用介绍" class="headerlink" title="AutoInputAuthCode使用介绍"></a>AutoInputAuthCode使用介绍</h1><p>在Android Studio打开你的app module中的build.gradle,添加依赖：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">   ...</div><div class="line">   <span class="keyword">compile</span> <span class="string">'tech.michaelx.authcode:authcode:1.0.0'</span> <span class="comment">// 添加依赖</span></div><div class="line">   ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果无法下载上述依赖，可以打开你的项目根目录下的build.gradle，添加maven仓库地址<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">allprojects</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        jcenter()</div><div class="line">        maven &#123; url <span class="string">'https://dl.bintray.com/xiong-it/AndroidRepo'</span>&#125; <span class="comment">// 添加这行</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="示范代码"><a href="#示范代码" class="headerlink" title="示范代码"></a>示范代码</h1><p>AutoInputAuthCode是一个帮助Android开发者快速实现自动填写验证码的类库，客户端示例代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CodeConfig config = <span class="keyword">new</span> CodeConfig.Builder()</div><div class="line">                        .codeLength(<span class="number">4</span>) <span class="comment">// 设置验证码长度</span></div><div class="line">                        .smsFromStart(<span class="number">133</span>) <span class="comment">// 设置验证码发送号码前几位数字</span></div><div class="line">                        <span class="comment">//.smsFrom(1690123456789) // 如果验证码发送号码固定，则可以设置验证码发送完整号码</span></div><div class="line">                        .smsBodyStartWith(<span class="string">"百度科技"</span>) <span class="comment">// 设置验证码短信开头文字</span></div><div class="line">                        .smsBodyContains(<span class="string">"验证码"</span>) <span class="comment">// 设置验证码短信内容包含文字</span></div><div class="line">                        .build();</div><div class="line">                        </div><div class="line">AuthCode.getInstance().with(context).config(config).into(EditText);</div></pre></td></tr></table></figure></p>
+<ol>
+<li>通过单例获取一个AuthCode对象;</li>
+<li>提供一个上下文对象给AuthCode，放心，我会妥善处理你的上下文;</li>
+<li>提供一个你的验证码特征描述;</li>
+<li>告诉AuthCode你想将验证码写入哪个EditText.</li>
+</ol>
+<p>搞定，收工！  </p>
+<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://oler3nq5z.bkt.clouddn.com/authcode2.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>自动填写验证码需要读取短信权限，请在清单中添加权限：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_SMS"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_SMS"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>由于读取短信在API 23（Android 6.0）上权限级别是<strong>dangerous</strong>。所以还需要动态申请权限，但是申请权限需要依赖于Activity或者Fragment中的onRequestPermissionsResult()回调，所以需要开发者自己实现。  </p>
+<p>可参考<a href="https://github.com/xiong-it/AutoInputAuthCode" target="_blank" rel="external">AutoInputAuthCode</a>中sample的代码。</p>
+<p>该库实现原理请参考：<a href="http://blog.csdn.net/xiong_it/article/details/50997084" target="_blank" rel="external">《Android开发:实现APP自动填写注册验证码功能》</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>该库实际上被完成有一段时间了，一直在试着上传jcenter，有空把上传代码到jcenter总结下发出来，虽然上传jcenter在网上教程挺多的，但是很多都不够细节，容易误解，我就是被坑的一个。  </p>
+<p>祝大家撸码愉快！<br>项目地址：<a href="https://github.com/xiong-it/AutoInputAuthCode" target="_blank" rel="external">https://github.com/xiong-it/AutoInputAuthCode</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用AutoInputAuthCode快速实现自动填写验证码&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>科学上网:装Shadowsocks Server on VPS</title>
@@ -441,11 +489,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Android" scheme="https://xiong-it.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
-    
       <category term="BLE" scheme="https://xiong-it.github.io/tags/BLE/"/>
     
       <category term="智能硬件" scheme="https://xiong-it.github.io/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"/>
+    
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
@@ -516,11 +564,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
       <category term="模板方法模式" scheme="https://xiong-it.github.io/tags/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
     
@@ -608,11 +656,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
       <category term="策略模式" scheme="https://xiong-it.github.io/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
     
@@ -682,6 +730,8 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
@@ -689,8 +739,6 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="单例模式" scheme="https://xiong-it.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Singleton" scheme="https://xiong-it.github.io/tags/Singleton/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
@@ -758,11 +806,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
