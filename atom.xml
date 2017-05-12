@@ -495,11 +495,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Android" scheme="https://xiong-it.github.io/categories/Android/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="BLE" scheme="https://xiong-it.github.io/tags/BLE/"/>
     
       <category term="智能硬件" scheme="https://xiong-it.github.io/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
@@ -570,11 +570,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
-    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+    
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
       <category term="模板方法模式" scheme="https://xiong-it.github.io/tags/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
     
@@ -662,11 +662,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
-    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+    
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
       <category term="策略模式" scheme="https://xiong-it.github.io/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
     
@@ -736,8 +736,6 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
-    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
@@ -745,6 +743,8 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="单例模式" scheme="https://xiong-it.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Singleton" scheme="https://xiong-it.github.io/tags/Singleton/"/>
+    
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
@@ -812,11 +812,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
-    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+    
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
