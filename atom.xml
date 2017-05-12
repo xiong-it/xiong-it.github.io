@@ -17,8 +17,8 @@
   
   <entry>
     <title>Android开发：使用AutoInputAuthCode快速实现自动填写验证码</title>
-    <link href="https://xiong-it.github.io/2017/05/09/Android%E5%BC%80%E5%8F%91%EF%BC%9A%E4%BD%BF%E7%94%A8AutoInputAuthCode%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%86%99%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
-    <id>https://xiong-it.github.io/2017/05/09/Android开发：使用AutoInputAuthCode快速实现自动填写验证码/</id>
+    <link href="https://xiong-it.github.io/2017-05/Android%E5%BC%80%E5%8F%91%EF%BC%9A%E4%BD%BF%E7%94%A8AutoInputAuthCode%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%86%99%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    <id>https://xiong-it.github.io/2017-05/Android开发：使用AutoInputAuthCode快速实现自动填写验证码/</id>
     <published>2017-05-09T09:36:18.000Z</published>
     <updated>2017-05-12T09:35:11.001Z</updated>
     
@@ -71,8 +71,8 @@
   
   <entry>
     <title>科学上网:安装Shadowsocks Server on VPS</title>
-    <link href="https://xiong-it.github.io/2017/05/03/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E5%AE%89%E8%A3%85Shadowsocks-Server-on-VPS/"/>
-    <id>https://xiong-it.github.io/2017/05/03/科学上网-安装Shadowsocks-Server-on-VPS/</id>
+    <link href="https://xiong-it.github.io/2017-05/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E5%AE%89%E8%A3%85Shadowsocks-Server-on-VPS/"/>
+    <id>https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/</id>
     <published>2017-05-03T08:46:37.000Z</published>
     <updated>2017-05-12T09:22:41.635Z</updated>
     
@@ -134,8 +134,8 @@
   
   <entry>
     <title>Ubuntu 14.04编译AOSP for Nexus/Pixel</title>
-    <link href="https://xiong-it.github.io/2017/03/14/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/"/>
-    <id>https://xiong-it.github.io/2017/03/14/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/</id>
+    <link href="https://xiong-it.github.io/2017-03/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/"/>
+    <id>https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/</id>
     <published>2017-03-14T03:29:09.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -376,8 +376,8 @@ ninja: build stopped: subcommand failed.</code></p>
   
   <entry>
     <title>Android:BLE智能硬件开发详解</title>
-    <link href="https://xiong-it.github.io/2017/03/14/Android-BLE%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://xiong-it.github.io/2017/03/14/Android-BLE智能硬件开发详解/</id>
+    <link href="https://xiong-it.github.io/2017-03/Android-BLE%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://xiong-it.github.io/2017-03/Android-BLE智能硬件开发详解/</id>
     <published>2017-03-14T03:23:18.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -495,18 +495,18 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Android" scheme="https://xiong-it.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
-    
       <category term="BLE" scheme="https://xiong-it.github.io/tags/BLE/"/>
     
       <category term="智能硬件" scheme="https://xiong-it.github.io/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"/>
+    
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Design Patterns in Android：模板方法模式</title>
-    <link href="https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://xiong-it.github.io/2017/02/11/Design-Patterns-in-Android：模板方法模式/</id>
+    <link href="https://xiong-it.github.io/2017-02/Design-Patterns-in-Android%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：模板方法模式/</id>
     <published>2017-02-10T17:16:27.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -570,11 +570,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
       <category term="模板方法模式" scheme="https://xiong-it.github.io/tags/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
     
@@ -584,8 +584,8 @@ ninja: build stopped: subcommand failed.</code></p>
   
   <entry>
     <title>Design Patterns in Android：策略模式</title>
-    <link href="https://xiong-it.github.io/2017/02/07/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://xiong-it.github.io/2017/02/07/Design-Patterns-in-Android：策略模式/</id>
+    <link href="https://xiong-it.github.io/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/</id>
     <published>2017-02-07T03:39:33.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -662,11 +662,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
       <category term="策略模式" scheme="https://xiong-it.github.io/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
     
@@ -676,8 +676,8 @@ ninja: build stopped: subcommand failed.</code></p>
   
   <entry>
     <title>Design Patterns in Android：单例模式</title>
-    <link href="https://xiong-it.github.io/2017/01/17/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://xiong-it.github.io/2017/01/17/Design-Patterns-in-Android：单例模式/</id>
+    <link href="https://xiong-it.github.io/2017-01/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://xiong-it.github.io/2017-01/Design-Patterns-in-Android：单例模式/</id>
     <published>2017-01-17T08:11:02.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -736,6 +736,8 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
@@ -744,14 +746,12 @@ ninja: build stopped: subcommand failed.</code></p>
     
       <category term="Singleton" scheme="https://xiong-it.github.io/tags/Singleton/"/>
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
-    
   </entry>
   
   <entry>
     <title>Design Patterns in Android：目录纲要</title>
-    <link href="https://xiong-it.github.io/2017/01/17/Design-Patterns-in-Android%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BA%B2%E8%A6%81/"/>
-    <id>https://xiong-it.github.io/2017/01/17/Design-Patterns-in-Android：目录纲要/</id>
+    <link href="https://xiong-it.github.io/2017-01/Design-Patterns-in-Android%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BA%B2%E8%A6%81/"/>
+    <id>https://xiong-it.github.io/2017-01/Design-Patterns-in-Android：目录纲要/</id>
     <published>2017-01-17T07:14:34.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -812,18 +812,18 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+    
       <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>设计模式系列：OOP设计6大原则</title>
-    <link href="https://xiong-it.github.io/2017/01/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%B3%BB%E5%88%97%EF%BC%9AOOP%E8%AE%BE%E8%AE%A16%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
-    <id>https://xiong-it.github.io/2017/01/13/设计模式系列：OOP设计6大原则/</id>
+    <link href="https://xiong-it.github.io/2017-01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%B3%BB%E5%88%97%EF%BC%9AOOP%E8%AE%BE%E8%AE%A16%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
+    <id>https://xiong-it.github.io/2017-01/设计模式系列：OOP设计6大原则/</id>
     <published>2017-01-13T02:39:20.000Z</published>
     <updated>2017-05-03T08:21:21.756Z</updated>
     

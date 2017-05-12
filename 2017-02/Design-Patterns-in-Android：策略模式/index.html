@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Design Patterns in Android：策略模式 | MichaelX&#39;s Blog | MichaelX的开发博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,设计模式,Design Pattern,策略模式,Strategy">
+    <meta name="description" content="刚过去的春节，大家有没有从“节后综合征”中痊愈满血呢？ 新年里给大家带来的第一篇是《设计模式Android篇：策略模式》。 本文将通俗易懂的给大家分享Android源码中的策略模式和如何在开发中实践策略模式。">
+<meta name="keywords" content="Android,设计模式,Design Pattern,策略模式,Strategy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Patterns in Android：策略模式">
+<meta property="og:url" content="https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/index.html">
+<meta property="og:site_name" content="MichaelX&#39;s Blog">
+<meta property="og:description" content="刚过去的春节，大家有没有从“节后综合征”中痊愈满血呢？ 新年里给大家带来的第一篇是《设计模式Android篇：策略模式》。 本文将通俗易懂的给大家分享Android源码中的策略模式和如何在开发中实践策略模式。">
+<meta property="og:image" content="http://img.blog.csdn.net/20170206191558604?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-05-03T08:21:21.752Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design Patterns in Android：策略模式">
+<meta name="twitter:description" content="刚过去的春节，大家有没有从“节后综合征”中痊愈满血呢？ 新年里给大家带来的第一篇是《设计模式Android篇：策略模式》。 本文将通俗易懂的给大家分享Android源码中的策略模式和如何在开发中实践策略模式。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170206191558604?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+    
+        <link rel="alternative" href="/atom.xml" title="MichaelX&#39;s Blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">MichaelX</h5>
+          <a href="mailto:QQ:1692475028" title="QQ:1692475028" class="mail">QQ:1692475028</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xiong-it" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/xiong_it" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Design Patterns in Android：策略模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Design Patterns in Android：策略模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-07T03:39:33.000Z" itemprop="datePublished" class="page-time">
+  2017-02-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Design-Pattern/">Design Pattern</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#策略模式定义"><span class="post-toc-number">2.</span> <span class="post-toc-text">策略模式定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#策略模式UML类图"><span class="post-toc-number">3.</span> <span class="post-toc-text">策略模式UML类图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#策略模式的示例代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">策略模式的示例代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android源码中的策略模式"><span class="post-toc-number">5.</span> <span class="post-toc-text">Android源码中的策略模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android开发中的策略模式实践"><span class="post-toc-number">6.</span> <span class="post-toc-text">Android开发中的策略模式实践</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">7.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Design-Patterns-in-Android：策略模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Design Patterns in Android：策略模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月07日 11:39" datetime="2017-02-07T03:39:33.000Z"  itemprop="datePublished">2017-02-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Design-Pattern/">Design Pattern</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>刚过去的春节，大家有没有从“节后综合征”中痊愈满血呢？ 新年里给大家带来的第一篇是《设计模式Android篇：策略模式》。 本文将通俗易懂的给大家分享Android源码中的策略模式和如何在开发中实践策略模式。<br><a id="more"></a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>刚过去的春节，大家有没有从“节后综合征”中痊愈满血呢？<br>新年里给大家带来的第一篇是《设计模式Android篇：策略模式》。<br>点击此处查看<a href="http://blog.csdn.net/xiong_it/article/details/54574020" target="_blank" rel="external">《Design Patterns in Android》</a>系列其他文章。</p>
+<pre><code>本文原创作者MichaelX（xiong_it），博客链接：http://blog.csdn.net/xiong_it，转载请注明出处。
+</code></pre><h2 id="策略模式定义"><a href="#策略模式定义" class="headerlink" title="策略模式定义"></a>策略模式定义</h2><blockquote>
+<p>策略模式(Strategy pattern)：定义一组算法，将其各个封装，并且使他们有交换性。</p>
+</blockquote>
+<p>策略模式好处在于使得算法在用户使用的时候能独立的改变，单一的修改，并且有良好扩展性。</p>
+<pre><code>算法：指的是各个策略的实现逻辑，而非算法领域的数据算法。
+</code></pre><h2 id="策略模式UML类图"><a href="#策略模式UML类图" class="headerlink" title="策略模式UML类图"></a>策略模式UML类图</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170206191558604?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="策略模式UML类图" title="">
+                </div>
+                <div class="image-caption">策略模式UML类图</div>
+            </figure>
+<p><strong>策略模式各角色讲解</strong></p>
+<ul>
+<li>IStrategy：策略基类（接口或者抽象类），定义子策略需要实现的方法，比如excute()，该方法取决于客户端代码（高层代码）需要该策略实现什么功能，子类则实现该方法，封装自己的算法，供外部调用。</li>
+<li>Context：此Context，非彼（Android中的）Context，它持有IStrategy真实的实例对象，提供给客户端调用IStrategy时的上下文调度者。</li>
+<li>ConcreteStrategyA：实现父类IStrategy的方法，封装自身算法逻辑。</li>
+<li>ConcreteStrategyB：同上</li>
+</ul>
+<h2 id="策略模式的示例代码"><a href="#策略模式的示例代码" class="headerlink" title="策略模式的示例代码"></a>策略模式的示例代码</h2><p>IStrategy<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IStrategy</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">excute</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ConcreteStrategyA<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title">IStrategy</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">excute</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"1.我是ConcreteStrategyA的算法实现"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ConcreteStrategyB</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title">IStrategy</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">excute</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"2.我是ConcreteStrategyB的算法实现"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Context上下文角色<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> IStrategy strategy;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Strategy strategy)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.strategy = strategy;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">excute</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.strategy.excute();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>好了，下面是就是客户端代码，描述了如何使用策略模式<br>Client</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Context context;</div><div class="line"></div><div class="line">		context = <span class="keyword">new</span> Context(<span class="keyword">new</span> ConcreteStrategyA());</div><div class="line">		context.excute();</div><div class="line"></div><div class="line">		<span class="comment">// context = new Context(new ConcreteStrategyB());</span></div><div class="line">		<span class="comment">// context.excute();</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上，客户端需要什么策略就new什么策略，完全取决于客户端需求，而且如果策略A出现问题，修改策略A就是了，和其他地方完全无关，如果现有策略不符合需求，再实现一个ConcreteStrategyA即可。</p>
+<h2 id="Android源码中的策略模式"><a href="#Android源码中的策略模式" class="headerlink" title="Android源码中的策略模式"></a>Android源码中的策略模式</h2><p><strong>大家在使用<a href="https://developer.android.com/guide/topics/graphics/view-animation.html" target="_blank" rel="external">Animation</a>动画时，可以给Animation对象设置不同的插值器（Interpolator）来实现动画快慢速度动态效果。</strong></p>
+<p>比如：<br>LinearInterpolator，线性插值器，实现匀速动画<br>AccelerateDecelerateInterpolator：加速减速插值器，实现开始加速，结尾时减速的动画</p>
+<p>BaseInterpolator类：Interpolator的实现类，就是速度插值器策略的基类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * An abstract class which is extended by default interpolators.</div><div class="line"> */</div><div class="line"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mChangingConfiguration;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@hide</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getChangingConfiguration</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mChangingConfiguration;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@hide</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setChangingConfiguration</span><span class="params">(<span class="keyword">int</span> changingConfiguration)</span> </span>&#123;</div><div class="line">        mChangingConfiguration = changingConfiguration;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Animation：Context上下文角色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public abstract class Animation implements Cloneable &#123;</div><div class="line">	// ...</div><div class="line">	// 省略无关代码</div><div class="line">	// ...</div><div class="line">	private Interpolator mInterpolator;</div><div class="line">	/**</div><div class="line">     * Sets the acceleration curve for this animation. Defaults to a linear</div><div class="line">     * interpolation.</div><div class="line">     *</div><div class="line">     * @param i The interpolator which defines the acceleration curve</div><div class="line">     * @attr ref android.R.styleable#Animation_interpolator</div><div class="line">     */</div><div class="line">    public void setInterpolator(Interpolator i) &#123;</div><div class="line">        mInterpolator = i;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LinearInterpolator等子类就实现了各自速度快慢的算法逻辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@HasNativeInterpolator</div><div class="line">public class LinearInterpolator extends BaseInterpolator &#123;</div><div class="line"></div><div class="line">    public LinearInterpolator() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public LinearInterpolator(Context context, AttributeSet attrs) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public float getInterpolation(float input) &#123;</div><div class="line">        return input;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在，我们给一个ImageView添加View动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ImageView view;</div><div class="line">Animation animation = getResources().getAnimation(R.anim.pop_anim);</div><div class="line">// 给view的动画设置一个插值器策略</div><div class="line">animation.setInterpolator(new LinearInterpolator());</div><div class="line">view.startAnimation(animation);</div></pre></td></tr></table></figure>
+<h2 id="Android开发中的策略模式实践"><a href="#Android开发中的策略模式实践" class="headerlink" title="Android开发中的策略模式实践"></a>Android开发中的策略模式实践</h2><p>需求，现在你开发的Android app需要实现盈利，PM经过一番规划，想要你接入<a href="http://blog.csdn.net/xiong_it/article/details/51685033" target="_blank" rel="external">微信支付</a>，<a href="http://blog.csdn.net/xiong_it/article/details/51819559" target="_blank" rel="external">支付宝支付</a>，银联支付等移动端通用支付方式。</p>
+<p>这个功能好实现，接入相关支付SDK即可，问题就在如何优雅的实现这个功能呢？</p>
+<blockquote>
+<p>延伸阅读：<br><a href="http://blog.csdn.net/xiong_it/article/details/51685033" target="_blank" rel="external">《 Android App支付系列（一）：微信支付接入详细指南(附官方支付demo)》</a><br><a href="http://blog.csdn.net/xiong_it/article/details/51819559" target="_blank" rel="external">《 Android App支付系列（二）：支付宝SDK接入详细指南(附官方支付demo)》</a></p>
+</blockquote>
+<p>以下是笔者是实现，供各位读者参考。</p>
+<ul>
+<li>PayActivity：客户端角色，支付方式选择界面</li>
+<li>AbsPayStrategy：作为支付策略基类，定义了一个pay方法</li>
+<li>PayContext：上下文角色，用来封装支付AbsPayStrategy对象</li>
+<li>WeChatPayStrategy：封装了微信支付算法逻辑</li>
+<li>ALiPayStrategy：封装了支付宝支付算法逻辑</li>
+<li>BankCardPayStrategy：封装了银行卡支付算法逻辑</li>
+</ul>
+<p><strong>支付功能的示意代码</strong><br>AbsPayStrategy的实际实现应该为抽象类，它需要持有Activity对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AbsPayStrategy</span> </span>&#123;</div><div class="line">	<span class="comment">// private Activity mActivity;</span></div><div class="line">	<span class="comment">// 本策略主要就是实现支付功能</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pay</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Context上下文角色<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayContext</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> AbsPayStrategy mPayStrategy;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">PayContext</span><span class="params">(AbsPayStrategy payStrategy)</span> </span>&#123;</div><div class="line">		mPayStrategy = payStrategy;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pay</span><span class="params">()</span> </span>&#123;</div><div class="line">		mPayStrategy.pay();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>微信支付策略实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 微信支付策略</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeChatPayStrategy</span> <span class="keyword">implements</span> <span class="title">AbsPayStrategy</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pay</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// 此处封装微信支付逻辑</span></div><div class="line">		<span class="comment">// 具体请参考笔者的博文《 Android App支付系列（一）：微信支付接入详细指南(附官方支付demo)》</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>支付宝支付策略实现 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 支付宝支付策略</div><div class="line"> */</div><div class="line">public class ALiPayStrategy  implements AbsPayStrategy &#123;</div><div class="line"></div><div class="line">	public void pay() &#123;</div><div class="line">		// 此处封装支付宝支付逻辑</div><div class="line">		// 具体请参考笔者的博文《 Android App支付系列（二）：支付宝支付SDk接入详细指南(附官方支付demo)》</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体的客户端代码，此处为PayActivity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class PayActivity extends Activity implements View.OnclickListener&#123;</div><div class="line"></div><div class="line">	private PayContext mPayContext;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void onClick(View view) &#123;</div><div class="line">		switch(v.getId()) &#123;// 客户端来决定使用哪种支付策略</div><div class="line">			case R.id.wechat_pay:</div><div class="line">				mPayContext = new PayContext(new WechatPayStrategy());</div><div class="line">				break;</div><div class="line"></div><div class="line">			case R.id.wechat_pay:</div><div class="line">				mPayContext = new PayContext(new ALiPayStrategy());</div><div class="line">				break;</div><div class="line"></div><div class="line">			case R.id.wechat_pay:</div><div class="line">				mPayContext = new PayContext(BankCardPayStrategy());</div><div class="line">				break;</div><div class="line"></div><div class="line">			default:</div><div class="line">				mPayContext = new PayContext(new WechatPayStrategy());</div><div class="line">			    break;</div><div class="line">		&#125;</div><div class="line">		// 利用实际的支付策略对象进行支付</div><div class="line">		mPayContext.pay();</div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就实现了一个app内的支付功能，如果微信支付出现问题了，改动微信支付策略代码，支付宝支付出现问题，改动想要实现即可，职责单一。</p>
+<p>如果PM有一天说：我们需要接入百付宝，京东支付。怎么办？<br>简单啊，实现相应的支付策略即可，完美适应需求变更，实现功能扩展。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果在开发某功能时，可能出现多种平等的选择，可以考虑使用策略模式实现。</p>
+<p>好了，今天的《设计模式Android篇：策略模式》就到这里，请继续关注<a href="http://blog.csdn.net/xiong_it/article/details/54574020" target="_blank" rel="external">《Design Patterns in Android》</a>（设计模式Android篇）系列博文，欢迎各位读者朋友评论区拍砖交流，共同进步。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-03T08:21:21.752Z" itemprop="dateUpdated">2017年5月3日 16:21</time>
+</span><br>
+
+
+        版权声明：本文为博主原创文章，转载请注明出处：<a href="/2017-02/Design-Patterns-in-Android：策略模式/" target="_blank" rel="external">https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/</a>
+    </div>
+    <footer>
+        <a href="https://xiong-it.github.io">
+            <img src="/img/avatar.jpg" alt="MichaelX">
+            MichaelX
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Pattern/">Design Pattern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Strategy/">Strategy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/&title=《Design Patterns in Android：策略模式》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/&title=《Design Patterns in Android：策略模式》 — MichaelX's Blog&source=刚过去的春节，大家有没有从“节后综合征”中痊愈满血呢？ 新年里给大家带来的第一篇是《设计模式Android篇：策略模式》。 本文将通俗易懂的给大家分享An..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Design Patterns in Android：策略模式》 — MichaelX's Blog&url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/&via=https://xiong-it.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017-02/Design-Patterns-in-Android：模板方法模式/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Design Patterns in Android：模板方法模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-01/Design-Patterns-in-Android：单例模式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Design Patterns in Android：单例模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="Design-Patterns-in-Android：策略模式" data-title="Design Patterns in Android：策略模式" data-url="https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'michaelxgithub', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>MichaelX's Blog &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/&title=《Design Patterns in Android：策略模式》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/&title=《Design Patterns in Android：策略模式》 — MichaelX's Blog&source=刚过去的春节，大家有没有从“节后综合征”中痊愈满血呢？ 新年里给大家带来的第一篇是《设计模式Android篇：策略模式》。 本文将通俗易懂的给大家分享An..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Design Patterns in Android：策略模式》 — MichaelX's Blog&url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/&via=https://xiong-it.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW4jMQwEQP//097rAotMukkp8QI1J8NxxqoJIDJNvV7x9f7r+ved5Kdf3a295+vGhYeHh7dY+uyL869Pfuv5ceRrxsPDw7vNe17K89KTh7Lfw5P14OHh4X0+r22m8/s/v4OHh4f3P/JmbffznZ+LCh4eHt6n8fIWdtb47iPa61kLHh4eXszLY4LPeX1lvoeHh4d3KDbdtLb5PZ9j3/fowsPDw7vBa9vZZMSVH0Fow9x2nXh4eHj3eO0oK49o28eUr6e9Gx4eHt4p3qblzePaZLjVNuhR2cDDw8O7zEsC3FPDqjy82ODx8PDwbvBm224eN8xC21mbPsxR8PDw8Na8vP0dxqmjEdoqa8HDw8P7kRg338rzJrgFt4Wkrn54eHh413hJlNBu9/ln9kUIDw8P7yyvPQ4147XjtGTp0RgMDw8P7wIvLwyzYdgMNguIV6ck8PDw8OJ15kP6zbCq/Zb6cEDyF8PDw8O7wNtEsW3sO5vyt2UMDw8P7wav3Xw3I/xZQJwXlSjSxcPDwzvEa0dfbeC7aZ1nq8LDw8O7x2tj2SRuyIdVm7JUhBF4eHh413h5lNBu/bOYI3knqnh4eHh4R3n5wanZJzcPKB+/5ffBw8PDO8Vr04t2ibPFtaWiyFrw8PDwDvHaw1XtI9gcOMiLTVTB8PDw8I7y2qXP2uh2PNaGJnh4eHg/yUtez6Lb9ghCfn2zNjw8PLyjvM3xpucSsjlA0LbvRYCLh4eHt+a1m+8sqE3KwCzkPQDDw8PDG/FmxaDu3PORVdCmF4UBDw8P7xov35RnG3f7ENshXJS14OHh4f0qb9ZG54HvjPRl4oKHh4f3Aby8jZ49uLzA1HUDDw8P7xAvaXaTJjhvpmdRSL42PDw8vHu89h/+U+HCqab8wIWHh4eX8v4A9lBzqHEogY0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Ubuntu 14.04编译AOSP for Nexus/Pixel | MichaelX&#39;s Blog | MichaelX的开发博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Ubuntu,AOSP,Nexus,Pixel">
+    <meta name="description" content="为你手中的Nexus,Pixel手机刷入自己的专属Rom">
+<meta name="keywords" content="Ubuntu,AOSP,Nexus,Pixel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 14.04编译AOSP for Nexus&#x2F;Pixel">
+<meta property="og:url" content="https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/index.html">
+<meta property="og:site_name" content="MichaelX&#39;s Blog">
+<meta property="og:description" content="为你手中的Nexus,Pixel手机刷入自己的专属Rom">
+<meta property="og:image" content="http://img.blog.csdn.net/20170312103501761?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170312115424282?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170312140527859?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170312140830563?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170312141046014?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170312215601142?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170312215818926?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170313115421821?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170313115511697?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-05-03T08:21:21.752Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu 14.04编译AOSP for Nexus&#x2F;Pixel">
+<meta name="twitter:description" content="为你手中的Nexus,Pixel手机刷入自己的专属Rom">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170312103501761?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+    
+        <link rel="alternative" href="/atom.xml" title="MichaelX&#39;s Blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">MichaelX</h5>
+          <a href="mailto:QQ:1692475028" title="QQ:1692475028" class="mail">QQ:1692475028</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xiong-it" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/xiong_it" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Ubuntu 14.04编译AOSP for Nexus/Pixel</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Ubuntu 14.04编译AOSP for Nexus/Pixel</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-14T03:29:09.000Z" itemprop="datePublished" class="page-time">
+  2017-03-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#准备"><span class="post-toc-number">2.</span> <span class="post-toc-text">准备</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#AOSP编译环境搭建"><span class="post-toc-number">3.</span> <span class="post-toc-text">AOSP编译环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装OpenJDK"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装OpenJDK</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装必要软件"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">安装必要软件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置USB访问权限"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置USB访问权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装repo"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装repo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置git"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置git</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下载AOSP源码"><span class="post-toc-number">6.</span> <span class="post-toc-text">下载AOSP源码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译AOSP预备工作"><span class="post-toc-number">7.</span> <span class="post-toc-text">编译AOSP预备工作</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译AOSP"><span class="post-toc-number">8.</span> <span class="post-toc-text">编译AOSP</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译AOSP遇到的问题"><span class="post-toc-number">9.</span> <span class="post-toc-text">编译AOSP遇到的问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">10.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">11.</span> <span class="post-toc-text">参考链接</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Ubuntu-14-04编译AOSP-for-Nexus-Pixel"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Ubuntu 14.04编译AOSP for Nexus/Pixel</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月14日 11:29" datetime="2017-03-14T03:29:09.000Z"  itemprop="datePublished">2017-03-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>为你手中的Nexus,Pixel手机刷入自己的专属Rom<br><a id="more"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽说几年前博主在一家公司做机顶盒的时候总是需要编译Android源码，但是那时还没有手中的爱机：Nexus 6，又名shamu。今天我要为它刷入一个自己编译的Rom。拿起键盘就是干。</p>
+<blockquote>
+<p>笔者注：AOSP:Android Open Source Project，安卓开源项目</p>
+</blockquote>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>Ubuntu 14.04+</li>
+<li>OpenJDK/JDK</li>
+<li>Nexus/Pixel手机一部</li>
+</ul>
+<p>假设你已经有了一个较新的Ubuntu系统和一部谷歌亲儿子手机，下文将从安装jdk开始。</p>
+<blockquote>
+<p>本文作者MichaelX，博客地址：<a href="http://blog.csdn.net/xiong_it" target="_blank" rel="external">http://blog.csdn.net/xiong_it</a> ，转载请注明出处。</p>
+</blockquote>
+<hr>
+<h1 id="AOSP编译环境搭建"><a href="#AOSP编译环境搭建" class="headerlink" title="AOSP编译环境搭建"></a>AOSP编译环境搭建</h1><h2 id="安装OpenJDK"><a href="#安装OpenJDK" class="headerlink" title="安装OpenJDK"></a>安装OpenJDK</h2><blockquote>
+<p><strong>警告</strong>：不要使用oracle jdk来编译较新（API 21+/Android 5.0及以上）的AOSP，会在准备编译工作<strong>make</strong> <strong>clobber</strong>时出现错误提示.</p>
+</blockquote>
+<pre><code>Checking build tools versions...
+*************************************************************
+You asked for an OpenJDK based build but your version is java version &quot;1.8.0_121&quot; Java(TM) SE Runtime Environment(build 1.8.0_121-b13)Java HotSpot (TM)64 bit Server VM(build 25.121-b13), mixed mode).
+*************************************************************
+build/core/main.mk:230: *** stop.
+</code></pre><p>关于<strong>JDK版本</strong>的选择：<strong>根据你想编译的Android版本来决定</strong></p>
+<ul>
+<li>AOSP最新源码: OpenJDK 8</li>
+<li>Android 5.x (Lollipop) - Android 6.0 (Marshmallow):OpenJDK 7</li>
+<li>Android 2.3.x (Gingerbread) - Android 4.4.x(KitKat):Java JDK 6</li>
+<li>Android 1.5 (Cupcake) - Android 2.2.x (Froyo): Java JDK 5</li>
+</ul>
+<p>博主想要编译的是Android 7.0，所以需要使用是OpenJDK 8。</p>
+<p>博主是用的Ubuntu 14.04 LTS，可采取安装deb包或者添加ppa两种方式安装OpenOJDK 8：</p>
+<ol>
+<li>OpenJDK deb包下载:<a href="https://github.com/xiong-it/buildAOSP/tree/master/OpenJDK8" target="_blank" rel="external">OpenJDK 8 on github</a></li>
+<li>添加ppa方式安装OpenJDK<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ sudo add-apt-repository ppa:openjdk-r/ppa</div><div class="line">$ sudo apt-get update</div><div class="line"></div><div class="line">$ sudo apt-get install openjdk-8-jdk</div><div class="line"></div><div class="line">$ sudo update-alternatives --config java</div><div class="line">$ sudo update-alternatives --config javac</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>假如你Ubuntu是15.04或者更新的系统，可直接运行下列命令进行OpenJDK 8安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install openjdk-8-jdk</div></pre></td></tr></table></figure>
+<p>Linux使用下列命令查看机器中所有jdk版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ michaelx@michaelx-ThinkPad:~/AOSP_NBD91Z$ update-java-alternatives -l</div><div class="line">// 打印出下面已安装的jdk版本</div><div class="line">java-1.8.0-openjdk-amd64 1069 /usr/lib/jvm/java-1.8.0-openjdk-amd64</div></pre></td></tr></table></figure></p>
+<p>Linux设置默认JDK命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 设置默认为openjdk8，此处必须选用OpenJDK8</div><div class="line">$ sudo update-java-alternatives -s java-1.8.0-openjdk-amd64</div><div class="line">// 设置默认为oracle jdk8</div><div class="line">$ sudo update-java-alternatives -s java-8-oracle</div><div class="line">// 设置默认为oracle jdk7</div><div class="line">$ sudo update-java-alternatives -s java-7-oracle</div></pre></td></tr></table></figure></p>
+<p>Ubuntu 14.04设置默认OpenJDK 8时出现一处警告提示：</p>
+<pre><code>update-java-alternatives: plugin alternative does not exist: /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so
+</code></pre><p>该提示无需理会，可直接忽略。</p>
+<p>查看Java版本，出现以下提示，说明jdk环境已经ok。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ java -version</div><div class="line"></div><div class="line">openjdk version &quot;1.8.0_111&quot;</div><div class="line">OpenJDK Runtime Environment (build 1.8.0_111-8u111-b14-3~14.04.1-b14)</div><div class="line">OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)</div></pre></td></tr></table></figure></p>
+<p>如果实在切换不了默认jdk，就像博主一样，卸了oracle jdk吧。</p>
+<h2 id="安装必要软件"><a href="#安装必要软件" class="headerlink" title="安装必要软件"></a>安装必要软件</h2><p>在你的Ubuntu 14(x64)上执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git-core gnupg flex bison gperf build-essential \</div><div class="line">  zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 \</div><div class="line">  lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache \</div><div class="line">  libgl1-mesa-dev libxml2-utils xsltproc unzip</div></pre></td></tr></table></figure></p>
+<p>会有些已经安装，有些无法安装，或者安装失败，无需理会，继续往下。其他系统版本系统请直接参考：<a href="https://source.android.com/source/initializing.html" target="_blank" rel="external">Establishing a build environment</a></p>
+<h2 id="配置USB访问权限"><a href="#配置USB访问权限" class="headerlink" title="配置USB访问权限"></a>配置USB访问权限</h2><p>ps：不知道这个干啥的，但是官方是这么建议的，为了让普通用户可访问usb设备。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -S -O - http://source.android.com/source/51-android.rules | sed &quot;s/&lt;username&gt;/$USER/&quot; | sudo tee &gt;/dev/null /etc/udev/rules.d/51-android.rules; sudo udevadm control --reload-rules</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="安装repo"><a href="#安装repo" class="headerlink" title="安装repo"></a>安装repo</h1><p>安装repo以下载AOSP源码。repo是Google根据git开发来专门管理Android源码用的，具有断点续传的特性。其主要命令可参考：<a href="http://blog.csdn.net/xiong_it/article/details/45173987" target="_blank" rel="external">git/repo常用命令一览</a>。依次执行下面命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd ~</div><div class="line">$ mkdir bin</div><div class="line">$ PATH=~/bin:$PATH</div><div class="line"></div><div class="line">$ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</div><div class="line">$ chmod a+x ~/bin/repo # 给repo添加执行权限</div></pre></td></tr></table></figure></p>
+<h1 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h1><p>由于需要下载Android源码，你需要事先准备好一个google的<a href="https://www.google.com/gmail/" target="_blank" rel="external">gmail邮箱</a>。执行以下命令配置git用户名和gmail邮箱。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;Your Name&quot;</div><div class="line">$ git config --global user.email &quot;you@gmail.com&quot;</div></pre></td></tr></table></figure></p>
+<p>配置Google的git cookies访问权限，以便大量下载aosp源码站点资源。<br><a href="https://android.googlesource.com/new-password" target="_blank" rel="external">https://android.googlesource.com/new-password</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170312103501761?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="configure" title="">
+                </div>
+                <div class="image-caption">configure</div>
+            </figure><br>复制框中的命令,粘贴到终端,执行。</p>
+<hr>
+<h1 id="下载AOSP源码"><a href="#下载AOSP源码" class="headerlink" title="下载AOSP源码"></a>下载AOSP源码</h1><p><strong>创建一个目录以存放Android源码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir ~/AOSP_NBD91Z # 目录名请自行定义，本文以AOSP_NBD91ZNBD91Z为例</div><div class="line">$ cd AOSP_NBD91Z</div></pre></td></tr></table></figure></p>
+<p>根据手中的机器和以下两个连接进行<strong>repo分支选择</strong>：<br><a href="https://source.android.com/source/build-numbers.html" target="_blank" rel="external">https://source.android.com/source/build-numbers.html</a><br><a href="https://developers.google.com/android/nexus/drivers" target="_blank" rel="external">https://developers.google.com/android/nexus/drivers</a></p>
+<p>AOSP源码编译默认是不适配驱动的，只适合模拟器运行，由于博主想要为Nexus 6编译，所以需要考虑驱动问题，根据上文第二个链接找到shamu的最新驱动，目前（20170307）最新的驱动支持到build NBD91Z，将<strong>驱动下载下来，留着备用</strong>。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170312115424282?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure><br>在第一个链接中找到对应的branch name（<strong>android-7.0.0_r29</strong>）。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170312140527859?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p><strong>在AOSP本地目录初始化repo分支</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd ~/AOSP_NBD91Z</div><div class="line">$ repo init -u https://android.googlesource.com/platform/manifest -b android-7.0.0_r29</div></pre></td></tr></table></figure></p>
+<p><strong>下载/续传AOSP源码</strong><br>无论是第一次开始下载，还是中途断掉后接着续传下载，都是执行以下命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ repo sync</div></pre></td></tr></table></figure></p>
+<p>之后就是漫长的等待了，该分支（android-7.0.0_r29）代码总共约80G（含版本管理文件.repo目录46G）。<br>这里提醒下各位，分区的时候一定记得至少至少至少给到120G啊，80G还不是最新分支的大小呢。编译后更加大得多：该分支编译出的out目录共30G左右。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170312140830563?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure><br>不过下载完成后，如果没什么版本控制的需要 .repo目录倒是可以删除掉，节省点硬盘空间。</p>
+<hr>
+<h1 id="编译AOSP预备工作"><a href="#编译AOSP预备工作" class="headerlink" title="编译AOSP预备工作"></a>编译AOSP预备工作</h1><p><strong>设置编译缓存（可选操作）</strong><br>可加速后续第二次编译，如需要，可在源码目录执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ export USE_CCACHE=1</div><div class="line">$ export CCACHE_DIR=~/AOSP_NBD91Z/.ccache # 目录自定义</div><div class="line">$ prebuilts/misc/linux-x86/ccache/ccache -M 50G # 官方推荐50-100G</div></pre></td></tr></table></figure></p>
+<p>更新环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.bashrc</div><div class="line"># 添加以下这行</div><div class="line">export USE_CCACHE=1</div><div class="line"></div><div class="line">$ source ~/.bashrc</div></pre></td></tr></table></figure></p>
+<p><strong>释放手机驱动</strong><br>将上述下载的几个驱动文件解压到<code>源码根目录</code>，解压后也就是几个脚本文件，依次执行，以释放驱动，画风大概如下<br>{% image http://img.blog.csdn.net/20170312141135768?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast 释放shamu驱动  %}</p>
+{% image http://img.blog.csdn.net/20170312213814287?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast 释放shamu驱动  %}
+{% image http://img.blog.csdn.net/20170312184550739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast 释放shamu驱动  %}
+<p>共8大条款，几十个小条款，一行行回车按过去，心累啊。</p>
+<blockquote>
+<p>划重点：在执行驱动脚本后，会让你看一大长串协议，最后你需要输入：<strong>I ACCEPT</strong> 来同意驱动的协议，方可释放驱动文件。按回车按快了则提示你没有同意，驱动未释放成功。成功之后会多出一个vendor目录。</p>
+</blockquote>
+<p><strong>清理编译文件</strong><br>驱动释放完毕，先执行<code>make clobber</code>清理下编译后文件的目录，第一次编译其实博主觉得这个命令无所谓。</p>
+<blockquote>
+<p>相似命令：<code>make clean</code> 它清理out/target/product/[product_name]目录。</p>
+</blockquote>
+<hr>
+<h1 id="编译AOSP"><a href="#编译AOSP" class="headerlink" title="编译AOSP"></a>编译AOSP</h1><p><strong>准备好编译平台</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cd AOSP_NBD91Z</div><div class="line">$ source build/envsetup.sh</div><div class="line"># or 或者，上面的命令和下面的命令等价</div><div class="line">$ . build/envsetup.sh</div></pre></td></tr></table></figure></p>
+<p><strong>选择编译平台</strong><br>执行上述命令后方可执行这条命令<code>lunch</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170312141046014?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="lunch" title="">
+                </div>
+                <div class="image-caption">lunch</div>
+            </figure><br>由于笔者手中是Nexus 6（shamu），所以果断选择了21</p>
+<p><strong>关于几种模式的区别</strong></p>
+<ul>
+<li>user 正常模式，给普通用户用的</li>
+<li>userdebug    具备root权限和更多调试功能，其他和user模式无异</li>
+<li>eng    开发者的最佳选项，具有许多额外的调试工具</li>
+</ul>
+<p><strong>正式编译AOSP源码</strong><br>运行<code>make</code>进行编译，也可以使用-j选项指定并行编译线程数量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 利用6个线程进行编译。官方建议的最快并行线程数量为：j16-j32之间。</div><div class="line">$ make -j6 </div><div class="line"></div><div class="line"># 请各位根据自身CPU性能量力而行。博主曾经使用-j16导致GUI界面和终端统统卡死，只能强制关机，心疼我的ssd硬盘30s。</div></pre></td></tr></table></figure></p>
+<p>又是一次漫长的等待啊，如果不出什么问题，那么在<code>out/target/product/[product_name]/</code>目录下将会多出诸如system.img，recovery.img等等，就可以愉快的刷机了。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170312215601142?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="build-aosp-successful" title="">
+                </div>
+                <div class="image-caption">build-aosp-successful</div>
+            </figure></p>
+<p>下面是生成的各种镜像文件和其他。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170312215818926?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="out-dir-files" title="">
+                </div>
+                <div class="image-caption">out-dir-files</div>
+            </figure></p>
+<hr>
+<h1 id="编译AOSP遇到的问题"><a href="#编译AOSP遇到的问题" class="headerlink" title="编译AOSP遇到的问题"></a>编译AOSP遇到的问题</h1><p><strong>权限遭拒</strong><br>由于博客使用了外部硬盘作为out编译输出，<code>make</code>时提示Permission is denied。这时换成<code>sudo make</code>即可。</p>
+<blockquote>
+<p>使用外部磁盘做out输出：export OUT_DIR_COMMON_BASE=/media/username/外部磁盘路径/out</p>
+</blockquote>
+<p><strong>内存不足</strong><br>由于笔者的内存只有4G，并且最开始没有分出swap分区，导致多次内存不足编译失败，有多种日志形式都表明内存不足：</p>
+<p>第1种错误：<br><code>[ 34% 12287/35393] Building with Jack: out/target/common/obj/JAVA_LIBRARIES/core-all_intermediates/with-local/classes.dex
+FAILED: /bin/bash out/target/common/obj/JAVA_LIBRARIES/core-all_intermediates/with-local/classes.dex.rsp
+Communication error with Jack server (52). Try &#39;jack-diagnose&#39;
+ninja: build stopped: subcommand failed.
+make: *** [ninja_wrapper] Error 1</code></p>
+<p>第2种错误：<br><code>[ 82% 30024/36285] Aligning zip: out/target/product/shamu/obj/SHARED_LIBRARIES/libdlext_test_runpath_zip_zipaligned_intermediates/libdlext_test_runpath_zip_zipaligned.zip
+[ 82% 30025/36285] Import includes file: out/target/product/shamu/obj/STATIC_LIBRARIES/libverifier_intermediates/import_includes
+[ 82% 30026/36285] target thumb C++: libverifier &lt;= bootable/recovery/asn1_decoder.cpp
+[ 82% 30027/36285] target thumb C++: libverifier &lt;= bootable/recovery/verifier.cpp
+[ 82% 30028/36285] Export includes file:  -- out/target/product/shamu/obj/STATIC_LIBRARIES/libverifier_intermediates/export_includes
+[ 82% 30029/36285] target thumb C++: libverifier &lt;= bootable/recovery/ui.cpp
+ninja: fatal: fork: Cannot allocate memory
+make: *** [ninja_wrapper] Error 1</code></p>
+<p>第3种错误：<br><code>FAILED: /bin/bash out/target/common/obj/JAVA_LIBRARIES/core-all_intermediates/with-local/classes.dex.rsp
+Out of memory error (version 1.2-rc4 &#39;Carnac&#39; (298900 f95d7bdecfceb327f9d201a1348397ed8a843843 by android-jack-team@google.com)).
+GC overhead limit exceeded.
+Try increasing heap size with java option &#39;-Xmx&lt;size&gt;&#39;.
+Warning: This may have produced partial or corrupted output.
+[ 31% 11494/36285] host C++: libartd-compiler &lt;= art/compiler/optimizing/graph_visualizer.cc
+[ 31% 11494/36285] Building with Jack: out/target/common/obj/JAVA_LIBRARIES/libprotobuf-java-nano_intermediates/classes.jack
+[ 31% 11494/36285] build out/target/common/obj/JAVA_LIBRARIES/sdk_v21_intermediates/classes.jack
+ninja: build stopped: subcommand failed.</code></p>
+<p>第4种错误：<br><code>[  6% 2375/35393] target Java: icu4j (out/target/common/obj/JAVA_LIBRARIES/icu4j_intermediates/classes)
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: external/icu/icu4j/main/classes/core/src/com/ibm/icu/impl/Relation.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+[  6% 2394/35393] host C++: libLLVMMC_32 &lt;= external/llvm/lib/MC/MCDwarf.cppninja: fatal: fork: Cannot allocate memory
+make: *** [ninja_wrapper] Error 1</code></p>
+<p>第5种错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[  5% 1883/35393] Docs droiddoc: out/target/common/docs/api-stubs</div><div class="line">FAILED: /bin/bash out/target/common/docs/api-stubs-timestamp.rsp</div><div class="line">OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000bdb80000, 72876032, 0) failed; error=&apos;Cannot allocate memory&apos; (errno=12)</div><div class="line">#</div><div class="line"># There is insufficient memory for the Java Runtime Environment to continue.</div><div class="line"># Native memory allocation (mmap) failed to map 72876032 bytes for committing reserved memory.</div><div class="line"># An error report file with more information is saved as:</div><div class="line"># /home/michaelx/AOSP_NBD91Z/hs_err_pid508.log</div><div class="line">[  5% 1883/35393] Docs droiddoc: out/target/common/docs/system-api-stubs</div><div class="line">DroidDoc took 27 sec. to write docs to out/target/common/docs/system-api-stubs</div><div class="line">ninja: build stopped: subcommand failed.</div><div class="line">make: *** [ninja_wrapper] Error 1</div></pre></td></tr></table></figure></p>
+<p>解决内存不足的3个办法：</p>
+<ol>
+<li>增加机器内存</li>
+<li>增加swap分区</li>
+<li>修改prebuild/sdk/tools/jack-admin文件</li>
+</ol>
+<p>第一种方式就不说了，给机器加根内存条，壕专享。<br>第二种方式：增加swap分区：<a href="http://hancj.blog.51cto.com/89070/197915" target="_blank" rel="external">http://hancj.blog.51cto.com/89070/197915</a><br>第三种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 备份jack-admin</div><div class="line">$ cp prebuild/sdk/tools/jack-admin ~/Docments/jack-admin.original</div><div class="line"></div><div class="line"># 修改jack-admin文件</div><div class="line">$ vim prebuild/sdk/tools/jack-admin</div><div class="line"></div><div class="line"># start-server方法，笔者的jack-admin在443行，修改该方法中的一句话：</div><div class="line"># JACK_SERVER_COMMAND=&quot;java -Djava.io.tmpdir=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -cp $LAUNCHER_JAR $LAUNCHER_NAME&quot;</div><div class="line"># 改成下面这行,增加java堆大小。</div><div class="line">JACK_SERVER_COMMAND=&quot;java -Djava.io.tmpdir=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -Xmx8000M -cp $LAUNCHER_JAR $LAUNCHER_NAME&quot;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>以上增加的-Xmx8000M，表示允许java在运行时java堆使用最大不超过8000M内存，这个数值是笔者经历了多次测试得到的结果，2048M，4096M，依旧没通过编译，改成8000M后编译通过，可能跟笔者自身硬件限制有很大关系</p>
+</blockquote>
+<pre><code>另一种修改方式：修改jack-admin第29行的变量：JACK_SERVER_VM_ARGUMENTS=&quot;${JACK_SERVER_VM_ARGUMENTS:=-Dfile.encoding-UTF-8 -XX:+TieredCompilation}&quot;
+改成：
+JACK_SERVER_VM_ARGUMENTS=&quot;${JACK_SERVER_VM_ARGUMENTS:=-Dfile.encoding-UTF-8 -XX:+TieredCompilation -Xmx8000M}&quot;
+但是这种修改方式仍然不好使，编译失败了。
+</code></pre><p>笔者是尝试了第二，三种方式解决。</p>
+<p><strong>jack-server无法运行</strong><br>错误日志如下：<br><code>[ 37% 13421/35393] Ensure Jack server is installed and started
+FAILED: /bin/bash -c &quot;(prebuilts/sdk/tools/jack-admin install-server prebuilts/sdk/tools/jack-launcher.jar prebuilts/sdk/tools/jack-server-4.8.ALPHA.jar  2&gt;&amp;1 || (exit 0) ) &amp;&amp; (JACK_SERVER_VM_ARGUMENTS=\&quot;-Dfile.encoding=UTF-8 -XX:+TieredCompilation\&quot; prebuilts/sdk/tools/jack-admin start-server 2&gt;&amp;1 || exit 0 ) &amp;&amp; (prebuilts/sdk/tools/jack-admin update server prebuilts/sdk/tools/jack-server-4.8.ALPHA.jar 4.8.ALPHA 2&gt;&amp;1 || exit 0 ) &amp;&amp; (prebuilts/sdk/tools/jack-admin update jack prebuilts/sdk/tools/jacks/jack-2.28.RELEASE.jar 2.28.RELEASE || exit 47; prebuilts/sdk/tools/jack-admin update jack prebuilts/sdk/tools/jacks/jack-3.36.CANDIDATE.jar 3.36.CANDIDATE || exit 47; prebuilts/sdk/tools/jack-admin update jack prebuilts/sdk/tools/jacks/jack-4.7.BETA.jar 4.7.BETA || exit 47 )&quot;
+Jack server already installed in &quot;/home/michaelx/.jack-server&quot;
+Launching Jack server java -XX:MaxJavaStackTraceDepth=0 -Djava.io.tmpdir=/tmp -Dfile.encoding=UTF-8 -XX:+TieredCompilation -cp /home/michaelx/.jack-server/launcher.jar com.android.jack.launcher.ServerLauncher
+Jack server failed to (re)start, try &#39;jack-diagnose&#39; or see Jack server log
+No Jack server running. Try &#39;jack-admin start-server&#39;
+No Jack server running. Try &#39;jack-admin start-server&#39;
+[ 37% 13421/35393] target thumb C++: libicui18n &lt;= external/icu/icu4c/source/i18n/coptccal.cpp
+[ 37% 13421/35393] target thumb C++: libicui18n &lt;= external/icu/icu4c/source/i18n/compactdecimalformat.cpp
+[ 37% 13421/35393] target thumb C++: libicui18n &lt;= external/icu/icu4c/source/i18n/cpdtrans.cpp
+ninja: build stopped: subcommand failed.</code></p>
+<p>解决Jack server failed to (re)start办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cd /prebuild/sdk/tools/</div><div class="line"></div><div class="line">$ jack-admin stop-server</div><div class="line">$ jack-admin start-server</div></pre></td></tr></table></figure>
+<p>和各路编译错误大战了7天7夜（真的是7天7夜呀，碰到的无数问题我都没写完呢），终于修成正果。</p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>到了这里，相信大家都能轻松搞机了，如果有需要Nexus的刷机教程，请留言评论，下次出一篇Nexus的刷机过程。放2张Nexus 6刷机后的高清截图<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170313115421821?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="首屏截图" title="">
+                </div>
+                <div class="image-caption">首屏截图</div>
+            </figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20170313115511697?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWGlvbmdfSVQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="抽屉截图" title="">
+                </div>
+                <div class="image-caption">抽屉截图</div>
+            </figure>
+<blockquote>
+<p>本文原创作者:<a href="http://blog.csdn.net/xiong_it" target="_blank" rel="external">MichaelX</a>,博客地址:<a href="http://blog.csdn.net/xiong_it.转载请注明来源" target="_blank" rel="external">http://blog.csdn.net/xiong_it.转载请注明来源</a></p>
+</blockquote>
+<p>欢迎光临：<a href="https://xiong-it.github.io">MichaelX’s Blog</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>感谢<br>AOSP官网：<a href="https://source.android.com/source/initializing.html" target="_blank" rel="external">https://source.android.com/source/initializing.html</a><br>AskUbuntu：<a href="http://askubuntu.com/questions/709904/ubuntu-openjdk-8-unable-to-locate-package" target="_blank" rel="external">http://askubuntu.com/questions/709904/ubuntu-openjdk-8-unable-to-locate-package</a><br>CSDN:<a href="http://blog.csdn.net/brightming/article/details/49763515" target="_blank" rel="external">http://blog.csdn.net/brightming/article/details/49763515</a></p>
+<p>etc….</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-03T08:21:21.752Z" itemprop="dateUpdated">2017年5月3日 16:21</time>
+</span><br>
+
+
+        版权声明：本文为博主原创文章，转载请注明出处：<a href="/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/" target="_blank" rel="external">https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/</a>
+    </div>
+    <footer>
+        <a href="https://xiong-it.github.io">
+            <img src="/img/avatar.jpg" alt="MichaelX">
+            MichaelX
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AOSP/">AOSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nexus/">Nexus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pixel/">Pixel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/&title=《Ubuntu 14.04编译AOSP for Nexus/Pixel》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/&title=《Ubuntu 14.04编译AOSP for Nexus/Pixel》 — MichaelX's Blog&source=为你手中的Nexus,Pixel手机刷入自己的专属Rom" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu 14.04编译AOSP for Nexus/Pixel》 — MichaelX's Blog&url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/&via=https://xiong-it.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">科学上网:安装Shadowsocks Server on VPS</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-03/Android-BLE智能硬件开发详解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android:BLE智能硬件开发详解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="Ubuntu-14-04编译AOSP-for-Nexus-Pixel" data-title="Ubuntu 14.04编译AOSP for Nexus/Pixel" data-url="https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'michaelxgithub', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>MichaelX's Blog &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/&title=《Ubuntu 14.04编译AOSP for Nexus/Pixel》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/&title=《Ubuntu 14.04编译AOSP for Nexus/Pixel》 — MichaelX's Blog&source=为你手中的Nexus,Pixel手机刷入自己的专属Rom" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu 14.04编译AOSP for Nexus/Pixel》 — MichaelX's Blog&url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/&via=https://xiong-it.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aMW4DMQwEQP//0w6QKinOXpKicwFGVWD4ZM0VkrLk4xGP5/fIP0+++fOT1/P/HI+NgYeHh9da+tW4WsrVcnuLvno2WcObV4CHh4e3xnu9lU828WShya9Xn8LDw8O7A6/6Il6/gmRmPDw8vP/OSwKC6kupXuXx8PDw7sPLo4FqnPoMRv7sYtaCh4eH15ktKl/d4e/F+h4eHh7eeMvuhbN5MJF80lwnHh4e3gIvD1Krx8YkYkheWeHAwMPDwzvKq8asybP5nJPiWTQPHh4e3gKv+s//PIrNr9TVw+NNSo2Hh4d3iJcX/pNL8yRoyGcuHCd4eHh4a7yzG3fvQlw9SMoBLh4eHt5RXh4uTCLXZIbXLysPR35lLXh4eHhHedXmqnzLrpbW8haE/KqNh4eHt83rbce9K2+18FYNmvHw8PA+w5tcoJOlTELkHh4PDw/vr3iTn6xeystdD9VLPB4eHt6YlwN6cWq1KSE/hKIrNR4eHt4yL9mU80Chd2zMg108PDy8T/J6kyZNA72mq0c8LmfGw8PDW+DlEUOvRaDXNFAtxZX/b8DDw8Mb8KpF+vw7vct070i4fBYPDw9vgTe5RudxQ/JUtXEhb0fAw8PD2+Al5au8iepUYFGdOTpU8PDw8A7x8kVM2rAm4ANlMDw8PLyjvPkuWg0XktfUa7oapRd4eHh4Ma/aDjVpLKg2eM1nxsPDw9vjTbb1hD0vp/WONzw8PLyzvGdx5GHugQ193r6Ah4eHt8CbhBR5i0C5wN+KJ3pHCB4eHt6ktl49DCaF/+qRMGrJwsPDw1vjzYthyYZeKPMXD63LX8TDw8O7Ae9UQWvvsBkdDHh4eHhHeTmjV/TKr9qFoh0eHh7eGq+3lU9KU5NoeCVrwcPDw1srgM2vxVVqfoQ0kXh4eHgp7wvOXIi93DXeHAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
