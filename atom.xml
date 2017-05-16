@@ -497,11 +497,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Android" scheme="http://blog.michaelx.tech/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
-    
       <category term="BLE" scheme="http://blog.michaelx.tech/tags/BLE/"/>
     
       <category term="智能硬件" scheme="http://blog.michaelx.tech/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"/>
+    
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
   </entry>
   
@@ -572,11 +572,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
       <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
       <category term="模板方法模式" scheme="http://blog.michaelx.tech/tags/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
     
@@ -664,11 +664,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
       <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
       <category term="策略模式" scheme="http://blog.michaelx.tech/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
     
@@ -738,6 +738,8 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
       <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
@@ -745,8 +747,6 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="单例模式" scheme="http://blog.michaelx.tech/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Singleton" scheme="http://blog.michaelx.tech/tags/Singleton/"/>
-    
-      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
   </entry>
   
@@ -814,11 +814,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
       <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
-    
-      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
   </entry>
   
