@@ -4,9 +4,9 @@
   <subtitle>MichaelX的开发博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://xiong-it.github.io/"/>
+  <link href="http://blog.michaelx.tech/"/>
   <updated>2017-05-12T09:35:11.001Z</updated>
-  <id>https://xiong-it.github.io/</id>
+  <id>http://blog.michaelx.tech/</id>
   
   <author>
     <name>MichaelX</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Android开发：使用AutoInputAuthCode快速实现自动填写验证码</title>
-    <link href="https://xiong-it.github.io/2017-05/Android%E5%BC%80%E5%8F%91%EF%BC%9A%E4%BD%BF%E7%94%A8AutoInputAuthCode%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%86%99%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
-    <id>https://xiong-it.github.io/2017-05/Android开发：使用AutoInputAuthCode快速实现自动填写验证码/</id>
+    <link href="http://blog.michaelx.tech/2017-05/Android%E5%BC%80%E5%8F%91%EF%BC%9A%E4%BD%BF%E7%94%A8AutoInputAuthCode%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%86%99%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    <id>http://blog.michaelx.tech/2017-05/Android开发：使用AutoInputAuthCode快速实现自动填写验证码/</id>
     <published>2017-05-09T09:36:18.000Z</published>
     <updated>2017-05-12T09:35:11.001Z</updated>
     
@@ -60,31 +60,31 @@
     
     </summary>
     
-      <category term="开源" scheme="https://xiong-it.github.io/categories/%E5%BC%80%E6%BA%90/"/>
+      <category term="开源" scheme="http://blog.michaelx.tech/categories/%E5%BC%80%E6%BA%90/"/>
     
     
-      <category term="AutoInputAuthCode" scheme="https://xiong-it.github.io/tags/AutoInputAuthCode/"/>
+      <category term="AutoInputAuthCode" scheme="http://blog.michaelx.tech/tags/AutoInputAuthCode/"/>
     
-      <category term="验证码" scheme="https://xiong-it.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+      <category term="验证码" scheme="http://blog.michaelx.tech/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>科学上网:安装Shadowsocks Server on VPS</title>
-    <link href="https://xiong-it.github.io/2017-05/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E5%AE%89%E8%A3%85Shadowsocks-Server-on-VPS/"/>
-    <id>https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/</id>
+    <link href="http://blog.michaelx.tech/2017-05/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E5%AE%89%E8%A3%85Shadowsocks-Server-on-VPS/"/>
+    <id>http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/</id>
     <published>2017-05-03T08:46:37.000Z</published>
-    <updated>2017-05-12T09:22:41.635Z</updated>
+    <updated>2017-05-16T07:48:30.405Z</updated>
     
     <content type="html"><![CDATA[<p>作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外<br><a id="more"></a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外。科学-上网的方法大致如下几种：</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外。科学上网的方法大致如下几种：</p>
 <ol>
 <li>修改本机hosts，可访问的网站有限</li>
-<li>v-p-n：容易被封</li>
-<li>shadow-socks-俗称：c</li>
+<li>vpn：容易被封</li>
+<li>shadowsocks-俗称：影梭</li>
 <li>etc…</li>
 </ol>
-<h1 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h1><p>其中修改hosts的方法成本最低，也最简单，网上找到需要访问网站的ip，写进本机hosts文件中即可。这样访问被|墙网站时，机器先访问hosts文件，发现已经有ip了，就不会访问dns服务器去要求解析域名了，而是直接根据指定ip去访问被|墙网站。<br>v-p-n的方式由于其容易被探测的缘故，容易被封。<br>根据socks5代理方式实现的shadow-socks项目，由于其隐蔽性存活至今。其需要一外国的服务器上装shadow-socks服务端实现流量中转，然后本地机器装shadow-socks客户端进行科学上网。当然网上也有很多的shadow-socks账号购买，服务器它给你搭好了，然后就售卖账号，但是也存在些骗子收完钱跑路的，拿着账号上不了网，当然也存在奸商超售账号的情况，许多人买完账号挤在一个服务器上爬蜗牛。那么为什么不自己搭一个shadow-socks服务端呢？更何况年付的价钱不比你购买账号贵！服务器还在自己手里，不怕隐私泄露。</p>
+<h1 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h1><p>其中修改hosts的方法成本最低，也最简单，网上找到需要访问网站的ip，写进本机hosts文件中即可。这样访问被|墙网站时，机器先访问hosts文件，发现已经有ip了，就不会访问dns服务器去要求解析域名了，而是直接根据指定ip去访问被|墙网站。<br>vpn的方式由于其容易被探测的缘故，容易被封。<br>根据socks5代理方式实现的shadowsocks项目，由于其隐蔽性存活至今。其需要一外国的服务器上装shadowsocks服务端实现流量中转，然后本地机器装shadowsocks客户端进行科学上网。当然网上也有很多的shadowsocks账号购买，服务器它给你搭好了，然后就售卖账号，但是也存在些骗子收完钱跑路的，拿着账号上不了网，当然也存在奸商超售账号的情况，许多人买完账号挤在一个服务器上爬蜗牛。那么为什么不自己搭一个shadowsocks服务端呢？更何况年付的价钱不比你购买账号贵！服务器还在自己手里，不怕隐私泄露。</p>
 <h1 id="什么是vps"><a href="#什么是vps" class="headerlink" title="什么是vps"></a>什么是vps</h1><p>笔者理解也不深，感觉就是虚拟主机的升级版，可拥有独立ip，但又不是独立服务器，是一台服务器上利用虚拟化技术独立出来的单独机器，购买这台vps后，你自己就可以对这台机器做任意操作：重装系统（Linux，Windows），装任意软件，拥有root权限，可远程操控都不在话下。总之和一台远程服务器差不多。但是价格却远低于服务器价格。搬瓦工VPS的介绍翻译如下：</p>
 <blockquote>
 <p> 隶属于美国IT7公司旗下的一款低价OpenVZ VPS主机方案、2017年新增KVM VPS架构，尤其是6款便宜年付VPS，无论从性价比还是稳定性都非常适合大众VPS用户需求，我们可以用来建站、搭建上网环境</p>
@@ -111,7 +111,7 @@
 <li>点击图中的Client Area，登陆账号<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.23.57.png" alt=""></li>
 <li>查看服务<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.25.16.png" alt=""></li>
 <li>点击右边的KiviVM Control Panel进入vps控制面板<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.27.36.png" alt=""></li>
-<li>安装Shadow-socks Server<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.29.14.png" alt="此处输入图片的描述"></li>
+<li>安装shadowsocks Server<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.29.14.png" alt="此处输入图片的描述"></li>
 </ol>
 <h1 id="ss客户端使用"><a href="#ss客户端使用" class="headerlink" title="ss客户端使用"></a>ss客户端使用</h1><p><a href="https://github.com/shadowsocks" target="_blank" rel="external">ss客户端下载</a><br><a href="https://github.com/shadowsocks/shadowsocks-windows/wiki/Shadowsocks-Windows-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="external">ss客户端使用</a></p>
 <h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1><p><a href="https://b.lhuac.com/2/" target="_blank" rel="external">https://b.lhuac.com/2/</a></p>
@@ -123,19 +123,19 @@
     
     </summary>
     
-      <category term="科学上网" scheme="https://xiong-it.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <category term="科学上网" scheme="http://blog.michaelx.tech/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     
-      <category term="科学上网" scheme="https://xiong-it.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <category term="科学上网" scheme="http://blog.michaelx.tech/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
-      <category term="Shadowsocks" scheme="https://xiong-it.github.io/tags/Shadowsocks/"/>
+      <category term="Shadowsocks" scheme="http://blog.michaelx.tech/tags/Shadowsocks/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu 14.04编译AOSP for Nexus/Pixel</title>
-    <link href="https://xiong-it.github.io/2017-03/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/"/>
-    <id>https://xiong-it.github.io/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/</id>
+    <link href="http://blog.michaelx.tech/2017-03/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/"/>
+    <id>http://blog.michaelx.tech/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/</id>
     <published>2017-03-14T03:29:09.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -350,7 +350,7 @@ ninja: build stopped: subcommand failed.</code></p>
 <blockquote>
 <p>本文原创作者:<a href="http://blog.csdn.net/xiong_it" target="_blank" rel="external">MichaelX</a>,博客地址:<a href="http://blog.csdn.net/xiong_it.转载请注明来源" target="_blank" rel="external">http://blog.csdn.net/xiong_it.转载请注明来源</a></p>
 </blockquote>
-<p>欢迎光临：<a href="https://xiong-it.github.io">MichaelX’s Blog</a></p>
+<p>欢迎光临：<a href="https://xiong-it.github.io" target="_blank" rel="external">MichaelX’s Blog</a></p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>感谢<br>AOSP官网：<a href="https://source.android.com/source/initializing.html" target="_blank" rel="external">https://source.android.com/source/initializing.html</a><br>AskUbuntu：<a href="http://askubuntu.com/questions/709904/ubuntu-openjdk-8-unable-to-locate-package" target="_blank" rel="external">http://askubuntu.com/questions/709904/ubuntu-openjdk-8-unable-to-locate-package</a><br>CSDN:<a href="http://blog.csdn.net/brightming/article/details/49763515" target="_blank" rel="external">http://blog.csdn.net/brightming/article/details/49763515</a></p>
 <p>etc….</p>
 ]]></content>
@@ -361,23 +361,23 @@ ninja: build stopped: subcommand failed.</code></p>
     
     </summary>
     
-      <category term="Android" scheme="https://xiong-it.github.io/categories/Android/"/>
+      <category term="Android" scheme="http://blog.michaelx.tech/categories/Android/"/>
     
     
-      <category term="Ubuntu" scheme="https://xiong-it.github.io/tags/Ubuntu/"/>
+      <category term="Ubuntu" scheme="http://blog.michaelx.tech/tags/Ubuntu/"/>
     
-      <category term="AOSP" scheme="https://xiong-it.github.io/tags/AOSP/"/>
+      <category term="AOSP" scheme="http://blog.michaelx.tech/tags/AOSP/"/>
     
-      <category term="Nexus" scheme="https://xiong-it.github.io/tags/Nexus/"/>
+      <category term="Nexus" scheme="http://blog.michaelx.tech/tags/Nexus/"/>
     
-      <category term="Pixel" scheme="https://xiong-it.github.io/tags/Pixel/"/>
+      <category term="Pixel" scheme="http://blog.michaelx.tech/tags/Pixel/"/>
     
   </entry>
   
   <entry>
     <title>Android:BLE智能硬件开发详解</title>
-    <link href="https://xiong-it.github.io/2017-03/Android-BLE%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://xiong-it.github.io/2017-03/Android-BLE智能硬件开发详解/</id>
+    <link href="http://blog.michaelx.tech/2017-03/Android-BLE%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://blog.michaelx.tech/2017-03/Android-BLE智能硬件开发详解/</id>
     <published>2017-03-14T03:23:18.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -482,7 +482,7 @@ ninja: build stopped: subcommand failed.</code></p>
 <blockquote>
 <p>本文原创作者:<a href="http://blog.csdn.net/xiong_it" target="_blank" rel="external">MichaelX</a>,博客地址:<a href="http://blog.csdn.net/xiong_it.转载请注明来源" target="_blank" rel="external">http://blog.csdn.net/xiong_it.转载请注明来源</a></p>
 </blockquote>
-<p>欢迎光临：<a href="https://xiong-it.github.io">MichaelX’s Blog</a></p>
+<p>欢迎光临：<a href="https://xiong-it.github.io" target="_blank" rel="external">MichaelX’s Blog</a></p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://developer.android.com/guide/topics/connectivity/bluetooth-le.html#terms" target="_blank" rel="external">https://developer.android.com/guide/topics/connectivity/bluetooth-le.html#terms</a></p>
 ]]></content>
     
@@ -492,21 +492,21 @@ ninja: build stopped: subcommand failed.</code></p>
     
     </summary>
     
-      <category term="Android" scheme="https://xiong-it.github.io/categories/Android/"/>
+      <category term="Android" scheme="http://blog.michaelx.tech/categories/Android/"/>
     
     
-      <category term="BLE" scheme="https://xiong-it.github.io/tags/BLE/"/>
+      <category term="BLE" scheme="http://blog.michaelx.tech/tags/BLE/"/>
     
-      <category term="智能硬件" scheme="https://xiong-it.github.io/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"/>
+      <category term="智能硬件" scheme="http://blog.michaelx.tech/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"/>
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Design Patterns in Android：模板方法模式</title>
-    <link href="https://xiong-it.github.io/2017-02/Design-Patterns-in-Android%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：模板方法模式/</id>
+    <link href="http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android：模板方法模式/</id>
     <published>2017-02-10T17:16:27.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -567,25 +567,25 @@ ninja: build stopped: subcommand failed.</code></p>
     
     </summary>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
-      <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
     
-      <category term="模板方法模式" scheme="https://xiong-it.github.io/tags/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
+      <category term="模板方法模式" scheme="http://blog.michaelx.tech/tags/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Template Method" scheme="https://xiong-it.github.io/tags/Template-Method/"/>
+      <category term="Template Method" scheme="http://blog.michaelx.tech/tags/Template-Method/"/>
     
   </entry>
   
   <entry>
     <title>Design Patterns in Android：策略模式</title>
-    <link href="https://xiong-it.github.io/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://xiong-it.github.io/2017-02/Design-Patterns-in-Android：策略模式/</id>
+    <link href="http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android：策略模式/</id>
     <published>2017-02-07T03:39:33.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -659,25 +659,25 @@ ninja: build stopped: subcommand failed.</code></p>
     
     </summary>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
-      <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
     
-      <category term="策略模式" scheme="https://xiong-it.github.io/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+      <category term="策略模式" scheme="http://blog.michaelx.tech/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Strategy" scheme="https://xiong-it.github.io/tags/Strategy/"/>
+      <category term="Strategy" scheme="http://blog.michaelx.tech/tags/Strategy/"/>
     
   </entry>
   
   <entry>
     <title>Design Patterns in Android：单例模式</title>
-    <link href="https://xiong-it.github.io/2017-01/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://xiong-it.github.io/2017-01/Design-Patterns-in-Android：单例模式/</id>
+    <link href="http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android：单例模式/</id>
     <published>2017-01-17T08:11:02.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -733,25 +733,25 @@ ninja: build stopped: subcommand failed.</code></p>
     
     </summary>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
-      <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
     
-      <category term="单例模式" scheme="https://xiong-it.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+      <category term="单例模式" scheme="http://blog.michaelx.tech/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Singleton" scheme="https://xiong-it.github.io/tags/Singleton/"/>
+      <category term="Singleton" scheme="http://blog.michaelx.tech/tags/Singleton/"/>
     
   </entry>
   
   <entry>
     <title>Design Patterns in Android：目录纲要</title>
-    <link href="https://xiong-it.github.io/2017-01/Design-Patterns-in-Android%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BA%B2%E8%A6%81/"/>
-    <id>https://xiong-it.github.io/2017-01/Design-Patterns-in-Android：目录纲要/</id>
+    <link href="http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BA%B2%E8%A6%81/"/>
+    <id>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android：目录纲要/</id>
     <published>2017-01-17T07:14:34.000Z</published>
     <updated>2017-05-03T08:21:21.752Z</updated>
     
@@ -809,21 +809,21 @@ ninja: build stopped: subcommand failed.</code></p>
     
     </summary>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
-      <category term="Android" scheme="https://xiong-it.github.io/tags/Android/"/>
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
-      <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
     
   </entry>
   
   <entry>
     <title>设计模式系列：OOP设计6大原则</title>
-    <link href="https://xiong-it.github.io/2017-01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%B3%BB%E5%88%97%EF%BC%9AOOP%E8%AE%BE%E8%AE%A16%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
-    <id>https://xiong-it.github.io/2017-01/设计模式系列：OOP设计6大原则/</id>
+    <link href="http://blog.michaelx.tech/2017-01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%B3%BB%E5%88%97%EF%BC%9AOOP%E8%AE%BE%E8%AE%A16%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
+    <id>http://blog.michaelx.tech/2017-01/设计模式系列：OOP设计6大原则/</id>
     <published>2017-01-13T02:39:20.000Z</published>
     <updated>2017-05-03T08:21:21.756Z</updated>
     
@@ -934,16 +934,16 @@ ninja: build stopped: subcommand failed.</code></p>
     
     </summary>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/categories/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/categories/Design-Pattern/"/>
     
     
-      <category term="设计模式" scheme="https://xiong-it.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://blog.michaelx.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Design Pattern" scheme="https://xiong-it.github.io/tags/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="http://blog.michaelx.tech/tags/Design-Pattern/"/>
     
-      <category term="6大原则" scheme="https://xiong-it.github.io/tags/6%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
+      <category term="6大原则" scheme="http://blog.michaelx.tech/tags/6%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
     
-      <category term="OOP" scheme="https://xiong-it.github.io/tags/OOP/"/>
+      <category term="OOP" scheme="http://blog.michaelx.tech/tags/OOP/"/>
     
   </entry>
   

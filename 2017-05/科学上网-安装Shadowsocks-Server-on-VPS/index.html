@@ -24,7 +24,7 @@
 <meta name="keywords" content="科学上网,Shadowsocks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科学上网:安装Shadowsocks Server on VPS">
-<meta property="og:url" content="https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/index.html">
+<meta property="og:url" content="http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/index.html">
 <meta property="og:site_name" content="MichaelX&#39;s Blog">
 <meta property="og:description" content="作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外">
 <meta property="og:image" content="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.06.23.png">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.25.16.png">
 <meta property="og:image" content="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.27.36.png">
 <meta property="og:image" content="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.29.14.png">
-<meta property="og:updated_time" content="2017-05-12T09:22:41.635Z">
+<meta property="og:updated_time" content="2017-05-16T07:48:30.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科学上网:安装Shadowsocks Server on VPS">
 <meta name="twitter:description" content="作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外">
@@ -203,14 +203,14 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外<br><a id="more"></a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外。科学-上网的方法大致如下几种：</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外。科学上网的方法大致如下几种：</p>
 <ol>
 <li>修改本机hosts，可访问的网站有限</li>
-<li>v-p-n：容易被封</li>
-<li>shadow-socks-俗称：c</li>
+<li>vpn：容易被封</li>
+<li>shadowsocks-俗称：影梭</li>
 <li>etc…</li>
 </ol>
-<h1 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h1><p>其中修改hosts的方法成本最低，也最简单，网上找到需要访问网站的ip，写进本机hosts文件中即可。这样访问被|墙网站时，机器先访问hosts文件，发现已经有ip了，就不会访问dns服务器去要求解析域名了，而是直接根据指定ip去访问被|墙网站。<br>v-p-n的方式由于其容易被探测的缘故，容易被封。<br>根据socks5代理方式实现的shadow-socks项目，由于其隐蔽性存活至今。其需要一外国的服务器上装shadow-socks服务端实现流量中转，然后本地机器装shadow-socks客户端进行科学上网。当然网上也有很多的shadow-socks账号购买，服务器它给你搭好了，然后就售卖账号，但是也存在些骗子收完钱跑路的，拿着账号上不了网，当然也存在奸商超售账号的情况，许多人买完账号挤在一个服务器上爬蜗牛。那么为什么不自己搭一个shadow-socks服务端呢？更何况年付的价钱不比你购买账号贵！服务器还在自己手里，不怕隐私泄露。</p>
+<h1 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h1><p>其中修改hosts的方法成本最低，也最简单，网上找到需要访问网站的ip，写进本机hosts文件中即可。这样访问被|墙网站时，机器先访问hosts文件，发现已经有ip了，就不会访问dns服务器去要求解析域名了，而是直接根据指定ip去访问被|墙网站。<br>vpn的方式由于其容易被探测的缘故，容易被封。<br>根据socks5代理方式实现的shadowsocks项目，由于其隐蔽性存活至今。其需要一外国的服务器上装shadowsocks服务端实现流量中转，然后本地机器装shadowsocks客户端进行科学上网。当然网上也有很多的shadowsocks账号购买，服务器它给你搭好了，然后就售卖账号，但是也存在些骗子收完钱跑路的，拿着账号上不了网，当然也存在奸商超售账号的情况，许多人买完账号挤在一个服务器上爬蜗牛。那么为什么不自己搭一个shadowsocks服务端呢？更何况年付的价钱不比你购买账号贵！服务器还在自己手里，不怕隐私泄露。</p>
 <h1 id="什么是vps"><a href="#什么是vps" class="headerlink" title="什么是vps"></a>什么是vps</h1><p>笔者理解也不深，感觉就是虚拟主机的升级版，可拥有独立ip，但又不是独立服务器，是一台服务器上利用虚拟化技术独立出来的单独机器，购买这台vps后，你自己就可以对这台机器做任意操作：重装系统（Linux，Windows），装任意软件，拥有root权限，可远程操控都不在话下。总之和一台远程服务器差不多。但是价格却远低于服务器价格。搬瓦工VPS的介绍翻译如下：</p>
 <blockquote>
 <p> 隶属于美国IT7公司旗下的一款低价OpenVZ VPS主机方案、2017年新增KVM VPS架构，尤其是6款便宜年付VPS，无论从性价比还是稳定性都非常适合大众VPS用户需求，我们可以用来建站、搭建上网环境</p>
@@ -237,7 +237,7 @@
 <li>点击图中的Client Area，登陆账号<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.23.57.png" alt=""></li>
 <li>查看服务<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.25.16.png" alt=""></li>
 <li>点击右边的KiviVM Control Panel进入vps控制面板<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.27.36.png" alt=""></li>
-<li>安装Shadow-socks Server<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.29.14.png" alt="此处输入图片的描述"></li>
+<li>安装shadowsocks Server<br><img src="http://oler3nq5z.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-27%20%E4%B8%8B%E5%8D%888.29.14.png" alt="此处输入图片的描述"></li>
 </ol>
 <h1 id="ss客户端使用"><a href="#ss客户端使用" class="headerlink" title="ss客户端使用"></a>ss客户端使用</h1><p><a href="https://github.com/shadowsocks" target="_blank" rel="external">ss客户端下载</a><br><a href="https://github.com/shadowsocks/shadowsocks-windows/wiki/Shadowsocks-Windows-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="external">ss客户端使用</a></p>
 <h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1><p><a href="https://b.lhuac.com/2/" target="_blank" rel="external">https://b.lhuac.com/2/</a></p>
@@ -248,14 +248,14 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-12T09:22:41.635Z" itemprop="dateUpdated">2017年5月12日 17:22</time>
+    最后更新时间：<time datetime="2017-05-16T07:48:30.405Z" itemprop="dateUpdated">2017年5月16日 15:48</time>
 </span><br>
 
 
-        版权声明：本文为博主原创文章，转载请注明出处：<a href="/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" target="_blank" rel="external">https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/</a>
+        版权声明：本文为博主原创文章，转载请注明出处：<a href="/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" target="_blank" rel="external">http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/</a>
     </div>
     <footer>
-        <a href="https://xiong-it.github.io">
+        <a href="http://blog.michaelx.tech">
             <img src="/img/avatar.jpg" alt="MichaelX">
             MichaelX
         </a>
@@ -277,7 +277,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&pic=http://blog.michaelx.tech/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -287,22 +287,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&source=作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&source=作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&via=https://xiong-it.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&via=http://blog.michaelx.tech" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -346,17 +346,6 @@
 
     
 
-<div class="comments" id="comments">
-    <div class="ds-thread" data-thread-key="科学上网-安装Shadowsocks-Server-on-VPS" data-title="科学上网:安装Shadowsocks Server on VPS" data-url="https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/"></div>
-</div>
-<script>
-lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
-
-var duoshuoQuery = {short_name:'michaelxgithub', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.7');
-
-
-</script>
 
 
 
@@ -405,7 +394,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&pic=https://xiong-it.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&pic=http://blog.michaelx.tech/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -415,22 +404,22 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&source=作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&title=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&source=作为一名开发者，科学上网是一个很强的诉求，至今被|墙的google，偶尔抽风的github，当然你要想着看小片，全球最大的xx网站也在墙外" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&via=https://xiong-it.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《科学上网:安装Shadowsocks Server on VPS》 — MichaelX's Blog&url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/&via=http://blog.michaelx.tech" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiong-it.github.io/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -441,7 +430,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aQU7DQAwF0Nz/0rBl0UTf9hgi9LKqgKZ5gzSefvu64uvrx5X8zfN1d8/k76+NCw8PD2/w6Pmj5D+/u2dCqi7EhyXAw8PDW+Pd7ah3r6u/TUpLsmT5M+Ph4eG9h5e/NzmC390HDw8P7z/xkqN2b4uvlh88PDy8v+XNI9ScmpSBZLkPZy14eHh4MS/vIr3n9Up/Dw8PD2/cVZ80w6rvndz59hPx8PDwFni94/KpUao8uh01z/Dw8PDWeIWtdhAfJEuQBBDPJDw8PLxtXt68TzbiPMbNj9rVRbmSzhgeHh7eId6pqxrC9o7p0egAHh4e3gIvLwlJxJAcqavberI0ByoeHh4eXqsYJIzqR07Yo4AYDw8Pb41XbeonxWCycIXm1vOS4eHh4S3w8uNy0tBKgoN8XCA/OieLjoeHh/ebvAngVCxbDY7x8PDwtnmTtla1udULi6uxCB4eHt4er/fQebtrUmwODGzh4eHhLfCSOLV6FK6WgckoQ2HoCg8PD+/Qe6tN/eoWPwpeW0XodnQADw8P7yhvEj30kPPQ9kCAi4eHhzduffWa+vmiTAYOqmHx7f8QDw8P7xCvGphWR6PmEW1vifHw8PD2eL1o4Lmc5Hc4uwSF7w14eHh4A14eMRz7sPEhu1ke8PDw8A7x8sKQR7F52yyJaPPW19WrZnh4eHgDXjMejVtl1bA4Lw/lBhgeHh7emNfbgpvt/LjpVb3w8PDwtnmT8ab8oDxpnuUl6sP98fDw8BZ41Q03aXdNGmPVkLcXHOPh4eHNeXvFoDpwkD96Yfnw8PDw1ni9pn4vhG1Wp2IrDg8PD+89vN5hujpe0BvVwsPDw3s/r3c0r7bQ8n4WHh4e3m/y8seqDgTkccPZ8AIPDw9vj1f9wp8PAcyDifyYfizPwMPDw3u6vgF5GmnObiywEgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3a24ojMQwE0Pn/n86+LiwdqiQ7m4HTT0MuTp8esEVJPz/x9Xq4nj7z9yvJu8kr/7577MLDw8M7dOvJzT298h7//lvvV2i/hYeHh3eP97Sjbjbo5Fuv4GpXw8PDw/s2XrJoewDkeDw8PLzfyMtjhbw4TiIPPDw8vG/j5UvPiuYWk6xzOGvBw8PD62rXYazwv/6+0t/Dw8PDW3fV80MiL39n4wKzCw8PD+8GL99wz44FzGLi9j7x8PDwbvDy+KANKWZNrOQR5Ovg4eHh3ea1LfzZTZxqfRX5NB4eHt5R3mwsoI13Z2XxvtmGh4eH9xleG7CeCg7yh9geaXh4eHg3eHmpmpOS2HdWuM/iCTw8PLyzvPYLs0BhE1W0JTseHh7ePV5S1G7aV+12nxwkxQGGh4eH9xFeHhC00UN7MOwLfTw8PLwbvNvU/Ua/b8Xh4eHh3eMlMetsc88ZbTOs/Qfg4eHhneLlcWoes85GDdqDJCru8fDw8I7y2u04x7dHRXtQRWvi4eHhXeDNBqfaVll7SOTRRlFe4+Hh4R3ltc2kzahBAptdjwo8PDy8C7z8o7Nm1Wa0q+VFK+Dh4eGteXmBm5TgyREyK9OHxw8eHh7eNd5+3KqNXPeFe9Qew8PDw7vGywOCPGBtD48kAs6HCfDw8PA+ycvjhvzRtJ88NeyFh4eH90le23Zqb3F2JNR3hYeHh3eU9yqvU2XubIA1b6QVKQseHh5eyduEqnlTqg0sZoV1FEzg4eHhHeLNhqgObMfBcbJ5HHh4eHi3ebOBgNm4at4eOzBwgIeHh/dlvHajz38lCTuikAIPDw/vy3h5vJuUwvmwQjFWi4eHh3eN145YzYLXpGjejBGsshY8PDy8mHc2bM1/bDYosA8s8PDw8Ba8P/x6DQFD9OiEAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
