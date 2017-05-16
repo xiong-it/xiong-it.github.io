@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-05/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E5%AE%89%E8%A3%85Shadowsocks-Server-on-VPS/</loc>
+    <lastmod>2017-05-16T08:06:15.634Z</lastmod>
+    <data>
+        <display>
+        <title>科学上网:安装Shadowsocks Server on VPS</title>
+        <pubTime>2017-05-03T08:46:37.000Z</pubTime>
+        
+        <tag>科学上网</tag>
+         
+        <tag>Shadowsocks</tag>
+         
+         
+           
+             
+              <breadCrumb title="科学上网" url="http://blog.michaelx.tech/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-05/Android%E5%BC%80%E5%8F%91%EF%BC%9A%E4%BD%BF%E7%94%A8AutoInputAuthCode%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%86%99%E9%AA%8C%E8%AF%81%E7%A0%81/</loc>
+    <lastmod>2017-05-12T09:35:11.001Z</lastmod>
+    <data>
+        <display>
+        <title>Android开发：使用AutoInputAuthCode快速实现自动填写验证码</title>
+        <pubTime>2017-05-09T09:36:18.000Z</pubTime>
+        
+        <tag>AutoInputAuthCode</tag>
+         
+        <tag>验证码</tag>
+         
+         
+           
+             
+              <breadCrumb title="开源" url="http://blog.michaelx.tech/categories/%E5%BC%80%E6%BA%90/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%B3%BB%E5%88%97%EF%BC%9AOOP%E8%AE%BE%E8%AE%A16%E5%A4%A7%E5%8E%9F%E5%88%99/</loc>
+    <lastmod>2017-05-03T08:21:21.756Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式系列：OOP设计6大原则</title>
+        <pubTime>2017-01-13T02:39:20.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+        <tag>Design Pattern</tag>
+         
+        <tag>6大原则</tag>
+         
+        <tag>OOP</tag>
+         
+         
+           
+             
+              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Design Patterns in Android：单例模式</title>
+        <pubTime>2017-01-17T08:11:02.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>设计模式</tag>
+         
+        <tag>Design Pattern</tag>
+         
+        <tag>单例模式</tag>
+         
+        <tag>Singleton</tag>
+         
+         
+           
+             
+              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Design Patterns in Android：模板方法模式</title>
+        <pubTime>2017-02-10T17:16:27.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>设计模式</tag>
+         
+        <tag>Design Pattern</tag>
+         
+        <tag>模板方法模式</tag>
+         
+        <tag>Template Method</tag>
+         
+         
+           
+             
+              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BA%B2%E8%A6%81/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Design Patterns in Android：目录纲要</title>
+        <pubTime>2017-01-17T07:14:34.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>设计模式</tag>
+         
+        <tag>Design Pattern</tag>
+         
+         
+           
+             
+              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Design Patterns in Android：策略模式</title>
+        <pubTime>2017-02-07T03:39:33.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>设计模式</tag>
+         
+        <tag>Design Pattern</tag>
+         
+        <tag>策略模式</tag>
+         
+        <tag>Strategy</tag>
+         
+         
+           
+             
+              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-03/Android-BLE%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Android:BLE智能硬件开发详解</title>
+        <pubTime>2017-03-14T03:23:18.000Z</pubTime>
+        
+        <tag>BLE</tag>
+         
+        <tag>智能硬件</tag>
+         
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://blog.michaelx.tech/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-03/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu 14.04编译AOSP for Nexus/Pixel</title>
+        <pubTime>2017-03-14T03:29:09.000Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>AOSP</tag>
+         
+        <tag>Nexus</tag>
+         
+        <tag>Pixel</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://blog.michaelx.tech/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+</urlset>
