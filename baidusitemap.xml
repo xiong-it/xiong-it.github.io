@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://blog.michaelx.tech/2017-11/Android%EF%BC%9A%E4%BD%BF%E7%94%A8LoadingLayout%E6%9D%A5%E5%B1%95%E7%A4%BA%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E6%97%B6%E4%B8%8D%E5%90%8C%E7%8A%B6%E6%80%81/</loc>
-    <lastmod>2017-11-24T03:13:42.931Z</lastmod>
+    <lastmod>2017-11-24T03:14:35.467Z</lastmod>
     <data>
         <display>
-        <title>Android开发：RecyclerView平滑流畅的滑动到指定位置</title>
+        <title>Android：使用LoadingLayout来展示加载数据时不同状态</title>
         <pubTime>2017-11-21T05:11:00.000Z</pubTime>
         
         <tag>Android</tag>
@@ -116,6 +116,7 @@
 
     
     
+    
   <url>
     <loc>http://blog.michaelx.tech/2017-01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%B3%BB%E5%88%97%EF%BC%9AOOP%E8%AE%BE%E8%AE%A16%E5%A4%A7%E5%8E%9F%E5%88%99/</loc>
     <lastmod>2017-05-03T08:21:21.756Z</lastmod>
@@ -142,35 +143,6 @@
     </url>
 
     
-    
-    
-  <url>
-    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
-    <data>
-        <display>
-        <title>Design Patterns in Android：策略模式</title>
-        <pubTime>2017-02-07T03:39:33.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>设计模式</tag>
-         
-        <tag>Design Pattern</tag>
-         
-        <tag>策略模式</tag>
-         
-        <tag>Strategy</tag>
-         
-         
-           
-             
-              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://blog.michaelx.tech/2017-03/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/</loc>
@@ -199,12 +171,12 @@
 
     
   <url>
-    <loc>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BA%B2%E8%A6%81/</loc>
+    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2017-05-03T08:21:21.752Z</lastmod>
     <data>
         <display>
-        <title>Design Patterns in Android：目录纲要</title>
-        <pubTime>2017-01-17T07:14:34.000Z</pubTime>
+        <title>Design Patterns in Android：策略模式</title>
+        <pubTime>2017-02-07T03:39:33.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -212,33 +184,9 @@
          
         <tag>Design Pattern</tag>
          
+        <tag>策略模式</tag>
          
-           
-             
-              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
-    <data>
-        <display>
-        <title>Design Patterns in Android：模板方法模式</title>
-        <pubTime>2017-02-10T17:16:27.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>设计模式</tag>
-         
-        <tag>Design Pattern</tag>
-         
-        <tag>模板方法模式</tag>
-         
-        <tag>Template Method</tag>
+        <tag>Strategy</tag>
          
          
            
@@ -275,6 +223,34 @@
 
     
   <url>
+    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Design Patterns in Android：模板方法模式</title>
+        <pubTime>2017-02-10T17:16:27.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>设计模式</tag>
+         
+        <tag>Design Pattern</tag>
+         
+        <tag>模板方法模式</tag>
+         
+        <tag>Template Method</tag>
+         
+         
+           
+             
+              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2017-05-03T08:21:21.752Z</lastmod>
     <data>
@@ -291,6 +267,30 @@
         <tag>单例模式</tag>
          
         <tag>Singleton</tag>
+         
+         
+           
+             
+              <breadCrumb title="Design Pattern" url="http://blog.michaelx.tech/categories/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BA%B2%E8%A6%81/</loc>
+    <lastmod>2017-05-03T08:21:21.752Z</lastmod>
+    <data>
+        <display>
+        <title>Design Patterns in Android：目录纲要</title>
+        <pubTime>2017-01-17T07:14:34.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>设计模式</tag>
+         
+        <tag>Design Pattern</tag>
          
          
            

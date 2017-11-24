@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.michaelx.tech/"/>
-  <updated>2017-11-24T03:13:42.931Z</updated>
+  <updated>2017-11-24T03:14:35.467Z</updated>
   <id>http://blog.michaelx.tech/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Android开发：RecyclerView平滑流畅的滑动到指定位置</title>
+    <title>Android：使用LoadingLayout来展示加载数据时不同状态</title>
     <link href="http://blog.michaelx.tech/2017-11/Android%EF%BC%9A%E4%BD%BF%E7%94%A8LoadingLayout%E6%9D%A5%E5%B1%95%E7%A4%BA%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E6%97%B6%E4%B8%8D%E5%90%8C%E7%8A%B6%E6%80%81/"/>
     <id>http://blog.michaelx.tech/2017-11/Android：使用LoadingLayout来展示加载数据时不同状态/</id>
     <published>2017-11-21T05:11:00.000Z</published>
-    <updated>2017-11-24T03:13:42.931Z</updated>
+    <updated>2017-11-24T03:14:35.467Z</updated>
     
     <content type="html"><![CDATA[<p>LoadingLayout:应用于Android中的一个加载数据不同状态的类库（自定义控件）。<br><a id="more"></a></p>
 <h1 id="LoadingLayout简介"><a href="#LoadingLayout简介" class="headerlink" title="LoadingLayout简介"></a>LoadingLayout简介</h1><p>[<figure class="image-bubble">
