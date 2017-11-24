@@ -1,3 +1,6 @@
+http://blog.michaelx.tech/2017-11/Android：使用LoadingLayout来展示加载数据时不同状态/
+http://blog.michaelx.tech/2017-10/Android开发：RecyclerView平滑流畅的滑动到指定位置/
+http://blog.michaelx.tech/2017-09/ Android开发小记：编译ijkplayer以支持更多视频格式/
 http://blog.michaelx.tech/2017-05/Android开发：使用AutoInputAuthCode快速实现自动填写验证码/
 http://blog.michaelx.tech/2017-05/科学上网-安装Shadowsocks-Server-on-VPS/
 http://blog.michaelx.tech/2017-03/Ubuntu-14-04编译AOSP-for-Nexus-Pixel/

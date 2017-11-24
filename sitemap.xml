@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.michaelx.tech/2017-11/Android%EF%BC%9A%E4%BD%BF%E7%94%A8LoadingLayout%E6%9D%A5%E5%B1%95%E7%A4%BA%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E6%97%B6%E4%B8%8D%E5%90%8C%E7%8A%B6%E6%80%81/</loc>
+    
+    <lastmod>2017-11-24T03:13:42.931Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.michaelx.tech/2017-09/%20Android%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AE%B0%EF%BC%9A%E7%BC%96%E8%AF%91ijkplayer%E4%BB%A5%E6%94%AF%E6%8C%81%E6%9B%B4%E5%A4%9A%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F/</loc>
+    
+    <lastmod>2017-10-17T13:06:18.594Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.michaelx.tech/2017-10/Android%E5%BC%80%E5%8F%91%EF%BC%9ARecyclerView%E5%B9%B3%E6%BB%91%E6%B5%81%E7%95%85%E7%9A%84%E6%BB%91%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2017-10-17T13:04:54.238Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.michaelx.tech/2017-05/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E5%AE%89%E8%A3%85Shadowsocks-Server-on-VPS/</loc>
     
     <lastmod>2017-05-16T08:06:15.634Z</lastmod>
@@ -23,13 +44,6 @@
   </url>
   
   <url>
-    <loc>http://blog.michaelx.tech/about/index.html</loc>
-    
-    <lastmod>2017-05-03T08:21:21.756Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.michaelx.tech/2017-01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%B3%BB%E5%88%97%EF%BC%9AOOP%E8%AE%BE%E8%AE%A16%E5%A4%A7%E5%8E%9F%E5%88%99/</loc>
     
     <lastmod>2017-05-03T08:21:21.756Z</lastmod>
@@ -44,14 +58,21 @@
   </url>
   
   <url>
-    <loc>http://blog.michaelx.tech/2017-03/Android-BLE%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%A6%E8%A7%A3/</loc>
+    <loc>http://blog.michaelx.tech/about/index.html</loc>
+    
+    <lastmod>2017-05-03T08:21:21.756Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2017-05-03T08:21:21.752Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.michaelx.tech/2017-02/Design-Patterns-in-Android%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://blog.michaelx.tech/2017-03/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/</loc>
     
     <lastmod>2017-05-03T08:21:21.752Z</lastmod>
     
@@ -72,14 +93,14 @@
   </url>
   
   <url>
-    <loc>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://blog.michaelx.tech/2017-03/Android-BLE%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%A6%E8%A7%A3/</loc>
     
     <lastmod>2017-05-03T08:21:21.752Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.michaelx.tech/2017-03/Ubuntu-14-04%E7%BC%96%E8%AF%91AOSP-for-Nexus-Pixel/</loc>
+    <loc>http://blog.michaelx.tech/2017-01/Design-Patterns-in-Android%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2017-05-03T08:21:21.752Z</lastmod>
     

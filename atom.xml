@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.michaelx.tech/"/>
-  <updated>2017-05-12T09:35:11.001Z</updated>
+  <updated>2017-11-24T03:13:42.931Z</updated>
   <id>http://blog.michaelx.tech/</id>
   
   <author>
@@ -14,6 +14,141 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android开发：RecyclerView平滑流畅的滑动到指定位置</title>
+    <link href="http://blog.michaelx.tech/2017-11/Android%EF%BC%9A%E4%BD%BF%E7%94%A8LoadingLayout%E6%9D%A5%E5%B1%95%E7%A4%BA%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E6%97%B6%E4%B8%8D%E5%90%8C%E7%8A%B6%E6%80%81/"/>
+    <id>http://blog.michaelx.tech/2017-11/Android：使用LoadingLayout来展示加载数据时不同状态/</id>
+    <published>2017-11-21T05:11:00.000Z</published>
+    <updated>2017-11-24T03:13:42.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>LoadingLayout:应用于Android中的一个加载数据不同状态的类库（自定义控件）。<br><a id="more"></a></p>
+<h1 id="LoadingLayout简介"><a href="#LoadingLayout简介" class="headerlink" title="LoadingLayout简介"></a>LoadingLayout简介</h1><p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://www.apache.org/licenses/LICENSE-2.0" alt="License](https://img.shields.io/badge/license-Apache%202-green.svg)" title="">
+                </div>
+                <div class="image-caption">License](https://img.shields.io/badge/license-Apache%202-green.svg)</div>
+            </figure><br>[ <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://bintray.com/xiong-it/AndroidRepo/LoadingLayout/_latestVersion" alt="Download](https://api.bintray.com/packages/xiong-it/AndroidRepo/LoadingLayout/images/download.svg)" title="">
+                </div>
+                <div class="image-caption">Download](https://api.bintray.com/packages/xiong-it/AndroidRepo/LoadingLayout/images/download.svg)</div>
+            </figure><br>应用于Android中的一个加载数据不同状态的类库（自定义控件）。 <a href="https://github.com/xiong-it/LoadingLayout" target="_blank" rel="external">https://github.com/xiong-it/LoadingLayout</a> </p>
+<h1 id="Compile"><a href="#Compile" class="headerlink" title="Compile"></a>Compile</h1><p>打开你的app module中的build.gradle,添加依赖：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'tech.michaelx.loadinglibrary:loadinglibrary:1.0.1'</span></div></pre></td></tr></table></figure></p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample  "></a>Sample  </h1><p>在layout的xml中使用如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">tech.michaelx.loadinglibrary.LoadingLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/loading_layout"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:contentDescription</span>=<span class="string">"loadingBackground可以是drawable或者颜色"</span></div><div class="line">    <span class="attr">android:padding</span>=<span class="string">"10dp"</span></div><div class="line">    <span class="attr">app:emptyView</span>=<span class="string">"@layout/empty_layout"</span></div><div class="line">    <span class="attr">app:errorView</span>=<span class="string">"@layout/failure_layout"</span></div><div class="line">    <span class="attr">app:loadingAnimator</span>=<span class="string">"@animator/loading"</span></div><div class="line">    <span class="attr">app:loadingBackground</span>=<span class="string">"#1296db"</span></div><div class="line">    <span class="attr">app:loadingView</span>=<span class="string">"@layout/loading_layout"</span></div><div class="line">    <span class="attr">app:retryLoadAlways</span>=<span class="string">"true"</span></div><div class="line">    <span class="attr">app:showLoadingDebug</span>=<span class="string">"true"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"本页面使用属性自定义loading各种状态"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">tech.michaelx.loadinglibrary.LoadingLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>常用自定义属性</strong>  </p>
+<p><code>app:loadingView=&quot;@layout/loading_layout&quot;</code> :指定加载时的展示布局，可以为空，为空时使用系统默认ProgressBar<br><code>app:loadingAnimator=&quot;@animator/loading&quot;</code>:只用上述属性制定时，该属性方可生效，作用于加载布局的动画<br><code>app:loadingBackground=&quot;#1296db&quot;</code>:指定加载过程中页面背景，可以是颜色或者drawable，默认为adnroid:color/white<br><code>app:emptyView=&quot;@layout/empty_layout&quot;</code>:指定了数据为空时的展示布局，可以为空，有默认布局，详细可看下方演示gif图<br><code>app:errorView=&quot;@layout/failure_layout&quot;</code>:指定加载失败时的展示布局，可以为空，有默认布局，详细可看下方演示gif图<br><code>app:retryLoadAlways=&quot;true&quot;</code>:是否开启数据为空时点击重试，默认为false<br><code>app:showLoadingDebug=&quot;true&quot;</code>:是否开启布局预览调试，默认为false，开启后可以在AS中正常预览布局文件，<strong>打包时请一定写false！</strong><br><br><br>其他更多属性请看<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"LoadingLayout"</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置数据为空的layout--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"emptyView"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置加载失败的layout--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"errorView"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置加载中的layout--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"loadingView"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置加载动画id--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"loadingAnimator"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置加载中的背景，或者颜色--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"loadingBackground"</span> <span class="attr">format</span>=<span class="string">"reference|color"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置默认Progressbar的progress_drawable--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"loadingProgressDrawable"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置数据为空时的图片--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"emptyDrawable"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置数据为空时的提示语--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"emptyText"</span> <span class="attr">format</span>=<span class="string">"string"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置加载失败时的图片--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"errorDrawable"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置加载失败时的提示语--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"errorText"</span> <span class="attr">format</span>=<span class="string">"string"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置是否总是点击重试，无论数据为空或者失败，默认false--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"retryLoadAlways"</span> <span class="attr">format</span>=<span class="string">"boolean"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!--设置自动显示加载调试--&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"showLoadingDebug"</span> <span class="attr">format</span>=<span class="string">"boolean"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Activity/Fragment代码中  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 初始化布局对象  </span></div><div class="line">mLoadingLayout = (LoadingLayout) findViewById(R.id.loading_layout);  </div><div class="line">  </div><div class="line"><span class="comment">// 加载完毕/加载成功  </span></div><div class="line">mLoadingLayout.loadComplete();  </div><div class="line">  </div><div class="line"><span class="comment">// 数据为空  </span></div><div class="line">mLoadingLayout.showEmpty();  </div><div class="line">  </div><div class="line"><span class="comment">// 加载失败  </span></div><div class="line">mLoadingLayout.loadFailure();  </div><div class="line">  </div><div class="line"><span class="comment">// 设置点击重试监听  </span></div><div class="line">mLoadingLayout.setOnRetryLoadListener(OnRetryLoadListener);  </div><div class="line"></div><div class="line"><span class="comment">// 显示加载中  </span></div><div class="line"><span class="comment">// 代码调用了setLoadingView()，才需要手动调用showLoading()</span></div><div class="line">mLoadingLayout.showLoading();</div></pre></td></tr></table></figure>
+<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p>加载中，加载完成，数据为空，加载失败，点击重试 几种状态演示gif<br><img src="https://raw.githubusercontent.com/xiong-it/LoadingLayout/master/output/LoadingLayout.gif" alt="加载几种状态演示"> </p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项  "></a>注意事项  </h1><p>LoadingLayout需要依赖于<code>appcompat-v7</code> &amp;<code>support-annotations</code>，请在工程中添加这两个依赖（版本可自定义，不建议低于25.3.1）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &quot;com.android.support:appcompat-v7:25.3.1&quot;  </div><div class="line">compile &apos;com.android.support:support-annotations:25.3.1&apos;</div></pre></td></tr></table></figure></p>
+<h1 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h1><p>感谢阅读，欢迎体验：<a href="https://github.com/xiong-it/LoadingLayout" target="_blank" rel="external">https://github.com/xiong-it/LoadingLayout</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;LoadingLayout:应用于Android中的一个加载数据不同状态的类库（自定义控件）。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://blog.michaelx.tech/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
+      <category term="开源" scheme="http://blog.michaelx.tech/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="LoadingLayout" scheme="http://blog.michaelx.tech/tags/LoadingLayout/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android开发：RecyclerView平滑流畅的滑动到指定位置</title>
+    <link href="http://blog.michaelx.tech/2017-10/Android%E5%BC%80%E5%8F%91%EF%BC%9ARecyclerView%E5%B9%B3%E6%BB%91%E6%B5%81%E7%95%85%E7%9A%84%E6%BB%91%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE/"/>
+    <id>http://blog.michaelx.tech/2017-10/Android开发：RecyclerView平滑流畅的滑动到指定位置/</id>
+    <published>2017-10-17T12:11:00.000Z</published>
+    <updated>2017-10-17T13:04:54.238Z</updated>
+    
+    <content type="html"><![CDATA[<p>RecyclerView.smoothScrollToPosition(int);滑动过程很突兀，很快就滑动到了指定位置，并没有像函数名那样smooth，本文将分享如何使得RecyclerView平滑流畅的滑动到指定位置。<br><a id="more"></a></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在项目中，想使RecyclerView慢慢的平缓滑动指定位置，于是使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RecyclerView.smoothScrollToPosition(int);</div></pre></td></tr></table></figure></p>
+<p>发现效果并不理想，滑动过程很突兀，很快就滑动到了指定位置，并没有像函数名那样smooth（流畅的，平滑的），也就是说smoothScrollToPosition没有滑动效果，黑人问号？？？</p>
+<pre><code>本文原创作者MichaelX，博客链接：http://blog.csdn.net/xiong_it，转载请注明出处。
+</code></pre><h1 id="探索历程"><a href="#探索历程" class="headerlink" title="探索历程"></a>探索历程</h1><p>既然函数名是流畅平缓的滑动到指定位置，为什么并不理想呢？查看源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public void smoothScrollToPosition(int position) &#123;</div><div class="line">       // ···省略无关代码，mLayout是该RecyclerView的LayoutManager对象</div><div class="line">       mLayout.smoothScrollToPosition(this, mState, position);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>所以实际上是调用<code>RecyclerView.LayoutManager.smoothScrollToPosition()</code>方法，这是个抽象方法。由于笔者项目中是<code>LinearLayoutManager</code>于是找到其具体实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">       public void smoothScrollToPosition(RecyclerView recyclerView,</div><div class="line">                                          RecyclerView.State state, final int position) &#123;</div><div class="line"></div><div class="line">           LinearSmoothScroller smoothScroller = new LinearSmoothScroller(context);</div><div class="line"></div><div class="line">           smoothScroller.setTargetPosition(position);</div><div class="line">           startSmoothScroll(smoothScroller);</div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
+<p>生成一个<code>RecyclerView.SmoothScroller</code>的子类<code>LinearSmoothScroller</code>对象smoothScroller，接着利用smoothScroller去完成剩下的滑动工作。</p>
+<p>于是进去LinearSmoothScroller看看。<strong>重大发现</strong>—里面有一个跟滑动速度相关的函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Calculates the scroll speed.</div><div class="line"> * 计算滑动速度</div><div class="line"> * 返回：滑过1px所需的时间消耗。</div><div class="line"> */</div><div class="line">protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) &#123;</div><div class="line">    // MILLISECONDS_PER_INCH是常量，等于20f</div><div class="line">    return MILLISECONDS_PER_INCH / displayMetrics.densityDpi;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>既然<code>RecyclerView.smoothScrollToPosition(int);</code>很快，是不是延长其滑动时间就可以呢？</p>
+<h1 id="解决smoothScrollToPosition无效"><a href="#解决smoothScrollToPosition无效" class="headerlink" title="解决smoothScrollToPosition无效"></a>解决smoothScrollToPosition无效</h1><p>为了验证上节延长滑动时间的想法，自定义一个LinearLayoutManager:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class SmoothScrollLayoutManager extends LinearLayoutManager &#123;</div><div class="line"></div><div class="line">        public SmoothScrollLayoutManager(Context context) &#123;</div><div class="line">            super(context);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void smoothScrollToPosition(RecyclerView recyclerView,</div><div class="line">                                           RecyclerView.State state, final int position) &#123;</div><div class="line"></div><div class="line">            LinearSmoothScroller smoothScroller =</div><div class="line">                    new LinearSmoothScroller(recyclerView.getContext()) &#123;</div><div class="line">                        // 返回：滑过1px时经历的时间(ms)。</div><div class="line">                        @Override</div><div class="line">                        protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) &#123;</div><div class="line">                            return 150f / displayMetrics.densityDpi;</div><div class="line">                        &#125;</div><div class="line">                    &#125;;</div><div class="line"></div><div class="line">            smoothScroller.setTargetPosition(position);</div><div class="line">            startSmoothScroll(smoothScroller);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>Binggo！成功！调用<code>RecyclerView.smoothScrollToPosition(int);</code>发现滑动速度变慢很多，不再突兀，不再突然滑过去，没有任何过渡，而是缓慢滑过去，终于名副其实的<strong>smooth</strong>。</p>
+<pre><code>本文原创作者MichaelX，博客链接：http://blog.csdn.net/xiong_it，转载请注明出处。
+</code></pre><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>通过自定义LinearLayoutManager，重写smoothScrollToPosition()方法中<code>LinearSmoothScroller</code>对象的<code>calculateSpeedPerPixel(DisplayMetrics)</code>方法,可以使<code>RecyclerView.smoothScrollToPosition(int);</code>平滑的流畅的滑动到指定位置。其他LayoutManager暂时没用到，需要读者自己尝试。</p>
+<p>如果读者朋友们有其他的办法，欢迎留言交流。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;RecyclerView.smoothScrollToPosition(int);滑动过程很突兀，很快就滑动到了指定位置，并没有像函数名那样smooth，本文将分享如何使得RecyclerView平滑流畅的滑动到指定位置。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://blog.michaelx.tech/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
+      <category term="RecyclerView" scheme="http://blog.michaelx.tech/tags/RecyclerView/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android开发小记：编译ijkplayer以支持更多视频格式</title>
+    <link href="http://blog.michaelx.tech/2017-09/%20Android%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AE%B0%EF%BC%9A%E7%BC%96%E8%AF%91ijkplayer%E4%BB%A5%E6%94%AF%E6%8C%81%E6%9B%B4%E5%A4%9A%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F/"/>
+    <id>http://blog.michaelx.tech/2017-09/ Android开发小记：编译ijkplayer以支持更多视频格式/</id>
+    <published>2017-09-22T13:11:02.000Z</published>
+    <updated>2017-10-17T13:06:18.594Z</updated>
+    
+    <content type="html"><![CDATA[<p>ijkplayer默认是不支持播放av的，呵呵，台词错了，是avi，今天分享下自己编译ijkplayer以支持avi，mpeg/mpg等更多格式视频。<br><a id="more"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ijkplayer大法好，感谢B站大佬。ijkplayer基于FFmpeg开发，适配Android/iOS平台。FFmpeg在开发界简直是神一般存在的项目，全平台全格式音视频编解码支持。像前段时间“杀程序员祭天”的暴风，受众颇广的QQ影音都是FFmpeg的受益者，因为不遵循GNU LGPL协议，也是FFmpeg项目耻辱柱上的成员。<br>但是ijkplayer默认是不支持播放av的，呵呵，台词错了，是avi，今天分享下自己编译ijkplayer以支持avi，mpeg/mpg等更多格式视频。</p>
+<h1 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h1><p>生产环境是MacOS或者Linux系统，笔者是MacOS，Android 6.0，这里以Mac为例记下自己编译ijkplayer for Android的过程。<code>build ijkplayer for Android.</code></p>
+<h1 id="编译准备"><a href="#编译准备" class="headerlink" title="编译准备"></a>编译准备</h1><ol>
+<li>安装homebrew：<code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></li>
+<li>安装git：<code>brew install git</code></li>
+<li>安装yasm：<code>brew install yasm</code></li>
+</ol>
+<p>下载ijkplayer项目：<br><code>git clone https://github.com/Bilibili/ijkplayer.git</code></p>
+<p>替换支持格式编译脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ijkplayer/config</div><div class="line">rm module.sh # 这是一个软链接，默认指向module-lite.sh</div><div class="line">ln -s module-default.sh module.sh</div></pre></td></tr></table></figure></p>
+<p>设置编译环境变量：<br>在终端执行以下命令（<strong>具体请指向自己的路径</strong>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export ANDROID_NDK=/Users/michaelx/Library/Android/sdk/ndk-bundle</div><div class="line">export ANDROID_SDK=/Users/michaelx/Library/Android/sdk</div></pre></td></tr></table></figure></p>
+<p>官方建议NDK版本为r10e，笔者为r13.1，MacOS 10.12.6 ，实测通过编译。</p>
+<h1 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h1><p>cd进入项目根目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">bash init-android.sh</div><div class="line">cd android/contrib</div><div class="line"># 执行以下两条命令</div><div class="line">./compile-ffmpeg.sh clean</div><div class="line"># 如果默认shell不是bash，建议执行以下命令</div><div class="line">bash compile-ffmpeg.sh clean</div><div class="line"></div><div class="line">./compile-ffmpeg.sh all</div><div class="line"># 如果默认shell不是bash，建议执行以下命令</div><div class="line">bash compile-ffmpeg.sh all</div></pre></td></tr></table></figure></p>
+<p>执行过程中出现的以下类似提示可忽略：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">WARNING: aarch64-linux-android-pkg-config not found, library detection may fail.</div><div class="line"></div><div class="line">--------------------</div><div class="line">[*] compile ffmpeg</div><div class="line">--------------------</div><div class="line">libavfilter/avfiltergraph.c: In function &apos;avfilter_graph_free&apos;:</div><div class="line">libavfilter/avfiltergraph.c:132:5: warning: &apos;resample_lavr_opts&apos; is deprecated (declared at libavfilter/avfilter.h:847) [-Wdeprecated-declarations]</div><div class="line">     av_freep(&amp;(*graph)-&gt;resample_lavr_opts);</div><div class="line">     ^</div></pre></td></tr></table></figure></p>
+<p>出现以下提示时FFmpeg编译完了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">--------------------</div><div class="line">[*] Finished</div><div class="line">--------------------</div><div class="line"># to continue to build ijkplayer, run script below,</div><div class="line">sh compile-ijk.sh</div></pre></td></tr></table></figure></p>
+<p>那我们就可以编译ijkplayer拿到so动态库文件。按照提示执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bash compile-ijk.sh</div><div class="line"># or</div><div class="line">sh compile-ijk.sh</div></pre></td></tr></table></figure></p>
+<p>出现以下提示表示ijkplayer编译完毕:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[armeabi-v7a] Compile++ thumb: ijksoundtouch &lt;= BPMDetect.cpp</div><div class="line">[armeabi-v7a] Compile++ thumb: ijksoundtouch &lt;= PeakFinder.cpp</div><div class="line">[armeabi-v7a] Compile++ thumb: ijksoundtouch &lt;= SoundTouch.cpp</div><div class="line">[armeabi-v7a] Compile++ thumb: ijksoundtouch &lt;= mmx_optimized.cpp</div><div class="line">[armeabi-v7a] Compile++ thumb: ijksoundtouch &lt;= ijksoundtouch_wrap.cpp</div><div class="line">[armeabi-v7a] Install        : libijkffmpeg.so =&gt; libs/armeabi-v7a/libijkffmpeg.so</div><div class="line">[armeabi-v7a] StaticLibrary  : libcpufeatures.a</div><div class="line">[armeabi-v7a] StaticLibrary  : libijkj4a.a</div><div class="line">[armeabi-v7a] StaticLibrary  : libandroid-ndk-profiler.a</div><div class="line">[armeabi-v7a] StaticLibrary  : libijksoundtouch.a</div><div class="line">[armeabi-v7a] StaticLibrary  : libyuv_static.a</div><div class="line">[armeabi-v7a] SharedLibrary  : libijksdl.so</div><div class="line">[armeabi-v7a] SharedLibrary  : libijkplayer.so</div><div class="line">[armeabi-v7a] Install        : libijksdl.so =&gt; libs/armeabi-v7a/libijksdl.so</div><div class="line">[armeabi-v7a] Install        : libijkplayer.so =&gt; libs/armeabi-v7a/libijkplayer.so</div><div class="line">/Users/michealx/Documents/ijkplayer/android</div></pre></td></tr></table></figure></p>
+<p>进入<code>ijkplayer/android/ijkplayer/armeabi-v7a/</code> 就可以拿到编出来的ijkplayer so了，那么编出来的ijkplayer so怎么用到项目当中呢？接着看。</p>
+<h1 id="使用编译的ijkplayer-so库"><a href="#使用编译的ijkplayer-so库" class="headerlink" title="使用编译的ijkplayer so库"></a>使用编译的ijkplayer so库</h1><p>ijkplayer的默认用法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &apos;tv.danmaku.ijk.media:ijkplayer-java:0.8.3&apos;</div><div class="line">compile &apos;tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.3&apos;</div></pre></td></tr></table></figure></p>
+<p>第二个依赖没有任何代码，实际只是so库，既然要使用自己编译出来的so，那么第二个依赖可以去掉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &apos;tv.danmaku.ijk.media:ijkplayer-java:0.8.3&apos;</div><div class="line">// compile &apos;tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.3&apos;</div></pre></td></tr></table></figure></p>
+<p>将自己编译出来的3个so文件放入项目的<code>main/jniLibs/armeabi-v7a/</code>下即可。播放代码无需做任何改变，现在ijkplayer就可以播放avi，mpeg/mpg多更多格式视频了。</p>
+<p>至于ijkplayer更多玩法，笔者也还在探索，如果后续有空笔者会陆续更新。</p>
+<h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a>传送门</h1><p>基于ijkplayer 0.8.3编译的Android so库（比默认依赖支持更多格式）:<br>github:<a href="https://github.com/xiong-it/compiled_ijkplayer4android" target="_blank" rel="external">compiled_ijkplayer4android</a>(后续会根据ijkplayer版本持续更新)</p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">Bilibili/ijkplayer</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ijkplayer默认是不支持播放av的，呵呵，台词错了，是avi，今天分享下自己编译ijkplayer以支持avi，mpeg/mpg等更多格式视频。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://blog.michaelx.tech/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
+      <category term="ijkplayer" scheme="http://blog.michaelx.tech/tags/ijkplayer/"/>
+    
+  </entry>
   
   <entry>
     <title>Android开发：使用AutoInputAuthCode快速实现自动填写验证码</title>
@@ -497,11 +632,11 @@ ninja: build stopped: subcommand failed.</code></p>
       <category term="Android" scheme="http://blog.michaelx.tech/categories/Android/"/>
     
     
+      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
+    
       <category term="BLE" scheme="http://blog.michaelx.tech/tags/BLE/"/>
     
       <category term="智能硬件" scheme="http://blog.michaelx.tech/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"/>
-    
-      <category term="Android" scheme="http://blog.michaelx.tech/tags/Android/"/>
     
   </entry>
   
