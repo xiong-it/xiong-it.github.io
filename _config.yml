@@ -78,11 +78,11 @@ baidu_url_submit:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-# - type: git
-#  repo: https://72a663c1e10c57eff7de9cfe1d3f8e5d719dc3c6@github.com/xiong-it/xiong-it.github.io.git
-#  branch: master
 - type: git
   repo: https://AndroidMichaelX:58007911bf9f66711ef65e807b26c396a2d6fb46@git.coding.net/AndroidMichaelX/AndroidMichaelX.git
   branch: master
  # for submit url to baidu
 - type: baidu_url_submitter
+- type: git
+  repo: https://xiong-it:72a663c1e10c57eff7de9cfe1d3f8e5d719dc3c6@github.com/xiong-it/xiong-it.github.io.git
+  branch: master
