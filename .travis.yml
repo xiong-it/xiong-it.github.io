@@ -21,9 +21,9 @@ install:
 
 before_script:
  # - npm install -g gulp
- - echo $GH_REPO
- - echo $CODING_REPO
- - echo $Baidu_Url_Submit_Token
+ - echo ${GH_REPO}
+ - echo ${CODING_REPO}
+ - echo ${Baidu_Url_Submit_Token}
 
 script:
   - hexo clean
