@@ -21,18 +21,20 @@ install:
 
 before_script:
  # - npm install -g gulp
- - echo ${GH_TOKEN}
- - echo ${CODING_REPO}
- - echo ${Baidu_Url_Submit_Token}
 
 script:
   - hexo clean
   - hexo generate
 
 after_script:
+  - cd public
+  - git init
   - git config user.name "xiongxunxiang"
   - git config user.email "xiongxunxiang_it@163.com"
-  - sed 's/gh_token/${GH_TOKEN}/g' ./_config.yml
+  - git add .
+  - git commit -m "travis-ci auto build."
+  - git push -fq https://AndroidMichaelX:@{Coding_TOKEN}@git.coding.net/AndroidMichaelX/AndroidMichaelX.git
+  - git push -fq https://${GH_TOKEN}@github.com/xiong-it/xiong-it.github.io.git
   - hexo deploy
 # E: Build LifeCycle
 
