@@ -21,7 +21,7 @@ install:
 
 before_script:
  # - npm install -g gulp
- - echo ${GH_REPO}
+ - echo ${GH_TOKEN}
  - echo ${CODING_REPO}
  - echo ${Baidu_Url_Submit_Token}
 
@@ -32,6 +32,7 @@ script:
 after_script:
   - git config user.name "xiongxunxiang"
   - git config user.email "xiongxunxiang_it@163.com"
+  - sed 's/gh_token/${GH_TOKEN}/g' ./_config.yml
   - hexo deploy
 # E: Build LifeCycle
 
