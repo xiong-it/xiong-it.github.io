@@ -27,14 +27,12 @@ script:
   - hexo generate
 
 after_script:
-  - cd public
-  - git init
   - git config user.name "xiongxunxiang"
   - git config user.email "xiongxunxiang_it@163.com"
-  - git add .
-  - git commit -m "travis-ci auto build."
-  - git push -fq https://AndroidMichaelX:@{Coding_TOKEN}@git.coding.net/AndroidMichaelX/AndroidMichaelX.git master:master
-  - git push -fq https://${GH_TOKEN}@github.com/xiong-it/xiong-it.github.io.git master:master
+  - sed -i 's/baidu_token/${Baidu_Url_Submit_Token}/g' ./_config.yml
+  - sed -i 's/gh_token/${GH_TOKEN}/g' ./_config.yml
+  - sed -i 's/coding_token/${Coding_TOKEN}/g' ./_config.yml
+  - cat ./_config.yml
   - hexo deploy
 # E: Build LifeCycle
 
