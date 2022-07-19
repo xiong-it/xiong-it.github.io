@@ -1,7 +1,7 @@
 language: node_js
 sudo: required
 node_js: 
-  - 7.9.0
+  - 16.16.0
 
 cache:
   directories:
@@ -27,7 +27,7 @@ script:
   - hexo generate
 
 after_script:
-  - git config user.name "xiongxunxiang"
+  - git config user.name "MichaelX"
   - git config user.email "xiongxunxiang_it@163.com"
   - sed -i "s/baidu_token/${Baidu_Url_Submit_Token}/g" ./_config.yml
   - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
