@@ -23,8 +23,12 @@ jobs:
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
         run: npm install
-      - name: Build
-        run: npm run build
+        run: npm install hexo-renderer-less --save
+        run: npm install hexo-generator-feed --save
+        run: npm install hexo-generator-json-content --save
+        run: npm install hexo-helper-qrcode --save
+      # - name: Build
+        # run: npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
