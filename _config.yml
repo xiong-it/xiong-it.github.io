@@ -7,7 +7,7 @@ title: MichaelX's Blog
 subtitle: MichaelX的开发博客
 description: 求索技术之道，追寻代码之美
 author: MichaelX
-language: zh-Hans
+language: zh-CN
 timezone: 
 since: 2017 
 
@@ -67,7 +67,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: indigo
+theme: hexo-theme-volantis
 
 baidu_url_submit:
   count: 100 # 提交最新的一个链接
