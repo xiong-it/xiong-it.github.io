@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "install": "npm install && npm instal hexo-renderer-less --save && npm install hexo-generator-feed --save && npm install hexo-generator-json-content --save && npm install hexo-helper-qrcode --save",
     "build": "npx hexo generate",
     "clean": "npx hexo clean",
     "deploy": "npx hexo deploy",
