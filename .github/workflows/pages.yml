@@ -7,13 +7,13 @@ on:
 
 jobs:
   pages:
-    runs-on: ubuntu-latest
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 18.x
+      - name: Use Node.js 18.8.0
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "18.8.0"
 
       - name: Cache NPM dependencies
         uses: actions/cache@v3
