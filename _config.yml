@@ -85,5 +85,7 @@ deploy:
   repo: https://github.com/xiong-it/xiong-it.github.io.git
   branch: gh-pages
   token: ${{ secrets.HEXO_DEPLOY_TOKEN }}
+  name: MichaelX
+  email: xiongxunxiang_it@163.com
  # for submit url to baidu
 - type: baidu_url_submitter
