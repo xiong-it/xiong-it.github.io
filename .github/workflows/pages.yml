@@ -22,10 +22,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
+      - run: npm -v
       - run: npm install
       - run: npm run build
-      - run: cat ./public/index.html
       - run: du -sh ./public/index.html
 
       - name: Deploy
