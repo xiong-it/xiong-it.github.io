@@ -82,9 +82,9 @@ deploy:
 #   repo: https://AndroidMichaelX:coding_token@git.coding.net/AndroidMichaelX/AndroidMichaelX.git
 #   branch: master
   type: git
-  repo: https://xiong-it:${{ secrets.HEXO_DEPLOY_TOKEN }}@github.com/xiong-it/xiong-it.github.io.git
+  repo: https://github.com/xiong-it/xiong-it.github.io.git
   branch: gh-pages
-  token: '${{ secrets.HEXO_DEPLOY_TOKEN }}'
+  token: ${{ secrets.HEXO_DEPLOY_TOKEN }}
   name: xiong-it
   email: xiongxunxiang_it@163.com
  # for submit url to baidu
